@@ -1,10 +1,13 @@
 import { Grid } from '@mui/material';
+import Background from '../img/Background.jpg';
 
 function Home() {
   return (
     <Grid
       sx={{
-        background: 'lightgrey',
+        backgroundImage: `url(${Background})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
         height: '100vh',
       }}
     >
