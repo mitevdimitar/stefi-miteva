@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material';
 import Background from '../img/Background.jpg';
 import Menu from '../components/Menu';
+import WelcomeBoard from '../components/WelcomeBoard';
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       }}
     >
       <Menu />
+      <WelcomeBoard />
     </Grid>
   );
 }
