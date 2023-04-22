@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 import Background from '../img/Background.jpg';
 import Menu from '../components/Menu';
 
-function Paintings() {
+function Illustrations() {
   return (
     <Grid
       sx={{
@@ -18,4 +18,4 @@ function Paintings() {
   );
 }
 
-export default Paintings;
+export default Illustrations;

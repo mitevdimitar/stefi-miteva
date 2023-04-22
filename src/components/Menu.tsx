@@ -12,6 +12,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 interface Props {
   /**
@@ -22,7 +23,13 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Творби', 'Рисунки', 'Книги', 'Отзиви', 'Контакти'];
+const navItems = [
+  { name: 'Творби', link: '/stories' },
+  { name: 'Рисунки', link: '/illustrations' },
+  { name: 'Книги', link: '/books' },
+  { name: 'Отзиви', link: '/feedback' },
+  { name: 'Контакти', link: '/contacts' },
+];
 
 export default function Menu(props: Props) {
   const { window } = props;
@@ -37,9 +44,9 @@ export default function Menu(props: Props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item.name} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -81,9 +88,11 @@ export default function Menu(props: Props) {
             }}
           >
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff', fontWeight: '600' }}>
-                {item}
-              </Button>
+              <Link key={item.name} to={item.link}>
+                <Button sx={{ color: '#fff', fontWeight: '600' }}>
+                  {item.name}
+                </Button>
+              </Link>
             ))}
           </Box>
         </Toolbar>
