@@ -8,6 +8,7 @@ export default function WelcomeBoard() {
       alignItems="center"
       sx={{
         height: '100%',
+        backdropFilter: 'brightness(85%)',
       }}
       pb={14}
     >

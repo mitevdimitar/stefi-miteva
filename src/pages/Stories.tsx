@@ -6,10 +6,39 @@ import {
   Box,
   CardMedia,
   Chip,
+  CardActions,
 } from '@mui/material';
 import Background from '../img/Background.jpg';
 //import Globe from '../img/globe.jpeg';
 import Menu from '../components/Menu';
+import StoryPreview from '../components/StoryPreview';
+
+const stories = [
+  {
+    title: 'Гласът на морето',
+    label: 'Първа награда',
+    extract:
+      'Вълните ме обляха, а аз се почувствах щастлива и спокойна от игривите гънки на водата. Тогава го забелязах. Беше много рядък и изключително голям.',
+    date: '12 10 2021',
+    img: 'rapana.jpeg',
+  },
+  {
+    title: 'Сладки за дядо Коледа',
+    label: 'Първа награда',
+    extract:
+      'Вълните ме обляха, а аз се почувствах щастлива и спокойна от игривите гънки на водата. Тогава го забелязах. Беше много рядък и изключително голям.',
+    date: '12 10 2021',
+    img: 'cookies.jpeg',
+  },
+  {
+    title: 'Приятелство дебне отвсякъде',
+    label: 'Първа награда',
+    extract:
+      'Вълните ме обляха, а аз се почувствах щастлива и спокойна от игривите гънки на водата. Тогава го забелязах. Беше много рядък и изключително голям.',
+    date: '12 10 2021',
+    img: 'cougar.jpeg',
+  },
+];
 
 function Stories() {
   return (
@@ -31,7 +60,7 @@ function Stories() {
           background: '#fffaf9',
         }}
       >
-        <Grid container item>
+        <Grid container item mb={5}>
           <Card
             sx={{
               display: 'flex',
@@ -43,7 +72,16 @@ function Stories() {
           >
             <CardMedia
               component="img"
-              sx={{ width: '60%', borderRadius: '40px' }}
+              sx={{
+                width: '60%',
+                borderRadius: '40px',
+                padding: '10px',
+                cursor: 'pointer',
+                transition: 'all .2s ease-in-out',
+                '&:hover': {
+                  transform: 'scale(1.02)',
+                },
+              }}
               image={require('../img/globe.jpeg')}
               alt="Live from space album cover"
             />
@@ -57,7 +95,6 @@ function Stories() {
                 sx={{
                   flex: '1 0 auto',
                   padding: '6px 26px',
-                  position: 'relative',
                 }}
               >
                 <Chip
@@ -67,6 +104,7 @@ function Stories() {
                     color: '#8C78C4',
                     borderRadius: '8px',
                     marginBottom: 1,
+                    marginTop: 1,
                   }}
                 />
                 <Typography
@@ -86,7 +124,7 @@ function Stories() {
                   align="justify"
                   sx={{
                     color: '#8b8b8b',
-                    height: '50%',
+                    //height: '50%',
                     overflow: 'hidden',
                     //whiteSpace: 'nowrap',
                     mb: 2,
@@ -97,21 +135,35 @@ function Stories() {
                   Около нея се извисяваха гордо върховете на ели и смърчове,
                   оставящи лека сянка по преминаващия автомобил.
                 </Typography>
+              </CardContent>
+              <CardActions
+                sx={{
+                  justifyContent: 'flex-end',
+                  padding: '20px',
+                }}
+              >
                 <Typography
                   align="right"
                   sx={{
                     color: '#8C78C4',
                     fontSize: '0.8rem',
-                    position: 'absolute',
-                    bottom: '30px',
-                    right: '30px',
+                    wdith: '100%',
                   }}
                 >
                   12.04.2023
                 </Typography>
-              </CardContent>
+              </CardActions>
             </Box>
           </Card>
+        </Grid>
+        <Grid container item>
+          {stories.map((story, i) => {
+            return (
+              <Grid key={i} p={1} item xs={4}>
+                <StoryPreview story={story} />
+              </Grid>
+            );
+          })}
         </Grid>
       </Grid>
     </Grid>
