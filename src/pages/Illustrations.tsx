@@ -1,29 +1,12 @@
-import { Grid } from '@mui/material';
-import Background from '../img/Background.jpg';
-import Menu from '../components/Menu';
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import Layout from '../components/Layout';
 
 function Illustrations() {
   return (
-    <Grid
-      sx={{
-        backgroundImage: `url(${Background})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        height: '100vh',
-      }}
-    >
-      <Menu />
-      <Box
-        sx={{
-          background: 'white',
-          marginTop: '64px',
-          padding: '50px 10% 0 10%',
-          height: '100%',
-        }}
-      >
+    <Layout isHome={false}>
+      <Box>
         <ImageList variant="masonry" cols={5} gap={8}>
           {itemData.map((item) => (
             <ImageListItem
@@ -42,7 +25,7 @@ function Illustrations() {
           ))}
         </ImageList>
       </Box>
-    </Grid>
+    </Layout>
   );
 }
 

@@ -8,10 +8,8 @@ import {
   Chip,
   CardActions,
 } from '@mui/material';
-import Background from '../img/Background.jpg';
-//import Globe from '../img/globe.jpeg';
-import Menu from '../components/Menu';
 import StoryPreview from '../components/StoryPreview';
+import Layout from '../components/Layout';
 
 const stories = [
   {
@@ -42,24 +40,8 @@ const stories = [
 
 function Stories() {
   return (
-    <Grid
-      sx={{
-        backgroundImage: `url(${Background})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-      }}
-    >
-      <Menu />
-      <Grid
-        container
-        sx={{
-          height: '100%',
-          marginTop: '64px',
-          padding: '50px 10% 0 10%',
-          minHeight: '100vh',
-          background: '#fffaf9',
-        }}
-      >
+    <Layout isHome={false}>
+      <>
         <Grid container item mb={5}>
           <Card
             sx={{
@@ -165,8 +147,8 @@ function Stories() {
             );
           })}
         </Grid>
-      </Grid>
-    </Grid>
+      </>
+    </Layout>
   );
 }
 

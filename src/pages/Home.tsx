@@ -1,21 +1,11 @@
-import { Grid } from '@mui/material';
-import Background from '../img/Background.jpg';
-import Menu from '../components/Menu';
 import WelcomeBoard from '../components/WelcomeBoard';
+import Layout from '../components/Layout';
 
 function Home() {
   return (
-    <Grid
-      sx={{
-        backgroundImage: `url(${Background})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        height: '100vh',
-      }}
-    >
-      <Menu />
+    <Layout isHome={true}>
       <WelcomeBoard />
-    </Grid>
+    </Layout>
   );
 }
 

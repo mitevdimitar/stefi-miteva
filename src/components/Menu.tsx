@@ -14,12 +14,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
-interface Props {
+interface MenuProps {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
   window?: () => Window;
+  isHome: boolean;
 }
 
 const drawerWidth = 240;
@@ -31,8 +32,8 @@ const navItems = [
   { name: 'Контакти', link: '/contacts' },
 ];
 
-export default function Menu(props: Props) {
-  const { window } = props;
+export default function Menu(props: MenuProps) {
+  const { window, isHome } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -63,7 +64,9 @@ export default function Menu(props: Props) {
       <AppBar
         component="nav"
         sx={{
-          backgroundColor: 'transparent',
+          background: isHome
+            ? 'transparent'
+            : 'radial-gradient(circle, rgba(171,179,158,1) 0%, rgba(83,141,174,1) 100%)',
           boxShadow: 'none',
           borderBottom: '1px solid white',
         }}
