@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import { Grid, Rating, Typography } from '@mui/material';
+import { Divider, Grid, Rating, Typography } from '@mui/material';
 
 function Books() {
   return (
@@ -113,7 +113,78 @@ function Books() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid container>Отзиви</Grid>
+        <Divider
+          sx={{
+            width: '100%',
+            padding: 5,
+            '& span': {
+              transform: 'translateY(10px)',
+            },
+          }}
+        >
+          АНОТАЦИЯ
+        </Divider>
+        <Grid
+          container
+          item
+          sx={{
+            flexWrap: 'nowrap',
+            background: 'white',
+            height: 'fit-content',
+            borderRadius: 5,
+          }}
+          p={3}
+        >
+          <Grid
+            sx={{
+              color: '#8b8b8b',
+            }}
+            mt={2}
+            mr={5}
+          >
+            <Typography align="justify">
+              „Децата обичат да четат приказки. Но ето че има и такива, които
+              измислят и пишат собствени истории. Въображението на Стефи ни води
+              през осем кралства в едно фантастично приключение, в което
+              загадките и опасностите се редуват с много забавни моменти и
+              преодоляване на невиждани и нечувани препятствия. Дали момиченцето
+              от приказката ще успее да намери вълшебните кристали, които търси?
+              Ще успее ли да направи света по-добър и да победи с тях злото
+              завинаги? Какви изпитания ще срещне по пътя си, какви приятели и
+              врагове… ще разберете щом разлистите „Осмото кралство“. Потопете
+              се в детското въображение на Стефи, за да пътувате през нейните
+              кралства от вълшебства!“
+            </Typography>
+            <Typography mt={2}>Явор Цанев</Typography>
+          </Grid>
+          <Grid item>
+            <img src={require('../img/page10.jpeg')} alt="Page of book" />
+          </Grid>
+        </Grid>
+        <Divider
+          sx={{
+            width: '100%',
+            padding: 5,
+            '& span': {
+              transform: 'translateY(10px)',
+            },
+          }}
+        >
+          ЧИТАТЕЛСКИ МНЕНИЯ
+        </Divider>
+        <Grid
+          container
+          item
+          sx={{
+            flexWrap: 'nowrap',
+            background: 'white',
+            height: 'fit-content',
+            borderRadius: 5,
+          }}
+          p={3}
+        >
+          Мнения
+        </Grid>
       </Grid>
     </Layout>
   );
