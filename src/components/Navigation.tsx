@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import Stories from '../pages/Stories';
 import Illustrations from '../pages/Illustrations';
 import Books from '../pages/Books';
+import Feedback from '../pages/Feedback';
 
 export default function Navigation() {
   return (
@@ -11,6 +12,7 @@ export default function Navigation() {
         <Route path="/stories" element={<Stories />} />
         <Route path="/illustrations" element={<Illustrations />} />
         <Route path="/books" element={<Books />} />
+        <Route path="/feedback" element={<Feedback />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
