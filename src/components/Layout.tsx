@@ -27,8 +27,7 @@ function Layout({ children, isHome }: LayoutProps) {
               }
             : {
                 minHeight: '100vh',
-                marginTop: '64px',
-                padding: '50px 10% 0 10%',
+                padding: '114px 10% 0 10%',
                 background: '#fffaf9',
               }
         }
