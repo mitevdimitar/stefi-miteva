@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import { Button, FormControl, Grid, TextField } from '@mui/material';
+import ContactsBackground from '../img/contacts_background.jpg';
 
 function Contacts() {
   return (
@@ -61,6 +62,10 @@ function Contacts() {
               sx={{
                 width: '50%',
                 borderRadius: '14px' /* background: '#588EAC' */,
+                background: '#7FA0A5',
+                '&: hover': {
+                  background: '#6A97AA',
+                },
               }}
             >
               Изпрати
@@ -72,7 +77,13 @@ function Contacts() {
           item
           xs={5.7}
           ml={2}
-          sx={{ background: '#588EAC', borderRadius: 10 }}
+          sx={{
+            //background: '#588EAC',
+            backgroundImage: `url(${ContactsBackground})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            borderRadius: 10,
+          }}
         ></Grid>
       </Grid>
     </Layout>
