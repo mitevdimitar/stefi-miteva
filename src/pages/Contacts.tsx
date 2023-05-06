@@ -1,6 +1,6 @@
 import Layout from '../components/Layout';
 import { Button, FormControl, Grid, TextField } from '@mui/material';
-import ContactsBackground from '../img/contacts_background.jpg';
+import ContactsBackground from '../img/contacts_background_full.jpg';
 
 function Contacts() {
   return (
@@ -9,11 +9,23 @@ function Contacts() {
         container
         mb={10}
         sx={{
-          background: 'white',
+          //background: 'white',
+          backgroundImage: `url(${ContactsBackground})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
           borderRadius: 10,
+          padding: '30px',
         }}
       >
-        <Grid item xs={6}>
+        <Grid
+          item
+          xs={6}
+          sx={{
+            background: 'white',
+            borderRadius: 5,
+            opacity: 0.9,
+          }}
+        >
           <FormControl
             fullWidth
             sx={{
@@ -79,9 +91,9 @@ function Contacts() {
           ml={2}
           sx={{
             //background: '#588EAC',
-            backgroundImage: `url(${ContactsBackground})`,
+            /* backgroundImage: `url(${ContactsBackground})`,
             backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
+            backgroundSize: 'cover', */
             borderRadius: 10,
           }}
         ></Grid>
