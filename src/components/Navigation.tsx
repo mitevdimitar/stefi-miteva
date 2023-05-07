@@ -5,6 +5,7 @@ import Illustrations from '../pages/Illustrations';
 import Books from '../pages/Books';
 import Feedback from '../pages/Feedback';
 import Contacts from '../pages/Contacts';
+import About from '../pages/About';
 
 export default function Navigation() {
   return (
@@ -15,6 +16,7 @@ export default function Navigation() {
         <Route path="/books" element={<Books />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/about" element={<About />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>

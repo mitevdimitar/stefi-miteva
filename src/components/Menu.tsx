@@ -103,6 +103,7 @@ export default function Menu(props: MenuProps) {
       <Box component="nav">
         <Drawer
           container={container}
+          //anchor="top"
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
