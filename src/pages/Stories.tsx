@@ -105,8 +105,6 @@ function Stories() {
                   component="div"
                   align="justify"
                   sx={{
-                    color: '#8b8b8b',
-                    //height: '50%',
                     overflow: 'hidden',
                     //whiteSpace: 'nowrap',
                     mb: 2,

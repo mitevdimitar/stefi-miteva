@@ -10,7 +10,6 @@ function Story() {
           background: 'white',
           height: 'fit-content',
           borderRadius: 5,
-          color: '#8b8b8b',
         }}
         p={3}
       >
@@ -71,7 +70,7 @@ function Story() {
           <Grid item xs={7}>
             <img
               src={require('../img/globe.jpeg')}
-              alt="Story image"
+              alt="Story preview"
               style={{ width: '-webkit-fill-available', borderRadius: 10 }}
             />
           </Grid>

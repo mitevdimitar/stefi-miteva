@@ -20,7 +20,6 @@ function About() {
           background: 'white',
           height: 'fit-content',
           borderRadius: 5,
-          color: '#8b8b8b',
         }}
         p={3}
       >

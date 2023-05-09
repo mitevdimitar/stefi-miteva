@@ -39,7 +39,6 @@ export default function StoryPreview({ story }: any) {
           variant="body2"
           align="justify"
           sx={{
-            color: '#8b8b8b',
             overflow: 'hidden',
           }}
         >

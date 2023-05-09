@@ -51,12 +51,7 @@ function Books() {
                 alt="goodreads log"
               />
             </Grid>
-            <Grid
-              sx={{
-                color: '#8b8b8b',
-              }}
-              mt={2}
-            >
+            <Grid mt={2}>
               <Typography align="justify">
                 „Осмото кралство“ е неподправена детска история, в която се
                 разказва за доброто, истинското приятелство и чистия
@@ -65,13 +60,7 @@ function Books() {
                 Австралия, Украйна и Индия.
               </Typography>
             </Grid>
-            <Grid
-              container
-              sx={{
-                color: '#8b8b8b',
-              }}
-              mt={1}
-            >
+            <Grid container mt={1}>
               <Grid item xs={10}>
                 <Typography align="justify">
                   Книгата е номинирана в категория „Изследователи“ за Национална
@@ -103,13 +92,7 @@ function Books() {
                 <Grid item xs={3}>
                   Автор:
                 </Grid>
-                <Grid
-                  item
-                  xs={9}
-                  sx={{
-                    color: '#8b8b8b',
-                  }}
-                >
+                <Grid item xs={9}>
                   Стефания Митева
                 </Grid>
               </Grid>
@@ -117,13 +100,7 @@ function Books() {
                 <Grid item xs={3}>
                   Редактор:
                 </Grid>
-                <Grid
-                  item
-                  xs={9}
-                  sx={{
-                    color: '#8b8b8b',
-                  }}
-                >
+                <Grid item xs={9}>
                   Васил Койнарев
                 </Grid>
               </Grid>
@@ -152,13 +129,7 @@ function Books() {
           }}
           p={3}
         >
-          <Grid
-            sx={{
-              color: '#8b8b8b',
-            }}
-            mt={2}
-            mr={5}
-          >
+          <Grid mt={2} mr={5}>
             <Typography align="justify">
               „Децата обичат да четат приказки. Но ето че има и такива, които
               измислят и пишат собствени истории. Въображението на Стефи ни води
