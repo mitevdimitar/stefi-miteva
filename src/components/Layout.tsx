@@ -11,6 +11,7 @@ function Layout({ children, isHome }: LayoutProps) {
   return (
     <Grid
       sx={{
+        backgroundColor: isHome ? `#C7BF85` : 'none',
         backgroundImage: isHome ? `url(${Background})` : 'none',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',

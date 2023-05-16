@@ -13,6 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import { storage } from '../services/firebase';
 
 interface MenuProps {
   /**
@@ -35,6 +36,8 @@ const navItems = [
 export default function Menu(props: MenuProps) {
   const { window, isHome } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  console.log({ storage });
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);

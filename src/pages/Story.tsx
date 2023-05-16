@@ -1,7 +1,20 @@
+import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import { Avatar, Chip, Grid, Typography } from '@mui/material';
+import { storage } from '../services/firebase';
+import { ref, getDownloadURL } from 'firebase/storage';
 
 function Story() {
+  const [imageUrl, setImageUrl] = useState('');
+  console.log({ imageUrl });
+
+  useEffect(() => {
+    const imageRef = ref(storage, `/story-images/globe.jpeg`);
+    getDownloadURL(imageRef).then((url) => {
+      setImageUrl(url);
+    });
+  }, []);
+
   return (
     <Layout isHome={false}>
       <Grid
@@ -68,11 +81,14 @@ function Story() {
             />
           </Grid>
           <Grid item xs={7}>
-            <img
-              src={require('../img/globe.jpeg')}
-              alt="Story preview"
-              style={{ width: '-webkit-fill-available', borderRadius: 10 }}
-            />
+            {imageUrl && (
+              <img
+                src={imageUrl}
+                alt="Story preview"
+                style={{ width: '-webkit-fill-available', borderRadius: 10 }}
+                loading="lazy"
+              />
+            )}
           </Grid>
         </Grid>
         <Grid container mt={5}>
