@@ -83,7 +83,8 @@ function Story() {
           <Grid item xs={7}>
             {imageUrl && (
               <img
-                src={imageUrl}
+                //src={imageUrl}
+                src="https://stefimiteva.com/wp-json/wp/v2/media/7378"
                 alt="Story preview"
                 style={{ width: '-webkit-fill-available', borderRadius: 10 }}
                 loading="lazy"
