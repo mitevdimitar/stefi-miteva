@@ -15,6 +15,14 @@ export const theme = responsiveFontSizes(
       allVariants: {
         color: '#8b8b8b',
       },
+      h4: {
+        fontFamily: "'Roboto Slab', serif",
+        color: '#3c424f',
+      },
+      h5: {
+        fontFamily: "'Roboto Slab', serif",
+        color: '#3c424f',
+      },
     },
   })
 );

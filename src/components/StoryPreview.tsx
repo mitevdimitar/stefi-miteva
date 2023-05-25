@@ -23,16 +23,7 @@ export default function StoryPreview({ story }: any) {
             marginBottom: 1,
           }}
         />
-        <Typography
-          gutterBottom
-          component="div"
-          variant="h5"
-          align="center"
-          sx={{
-            fontFamily: "'Roboto Slab', serif",
-            color: '#3c424f',
-          }}
-        >
+        <Typography gutterBottom component="div" variant="h5" align="center">
           {story.title}
         </Typography>
         <Typography

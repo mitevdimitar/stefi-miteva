@@ -11,6 +11,7 @@ function Story() {
   useEffect(() => {
     const imageRef = ref(storage, `/story-images/globe.jpeg`);
     getDownloadURL(imageRef).then((url) => {
+      console.log({ url });
       setImageUrl(url);
     });
   }, []);
@@ -83,8 +84,7 @@ function Story() {
           <Grid item xs={7}>
             {imageUrl && (
               <img
-                //src={imageUrl}
-                src="https://stefimiteva.com/wp-json/wp/v2/media/7378"
+                src={imageUrl}
                 alt="Story preview"
                 style={{ width: '-webkit-fill-available', borderRadius: 10 }}
                 loading="lazy"

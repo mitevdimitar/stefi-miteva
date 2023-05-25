@@ -56,16 +56,7 @@ function MainStoryPreview() {
               marginTop: 1,
             }}
           />
-          <Typography
-            component="div"
-            variant="h4"
-            align="center"
-            sx={{
-              fontFamily: "'Roboto Slab', serif",
-              color: '#3c424f',
-            }}
-            mb={1}
-          >
+          <Typography component="div" variant="h4" align="center" mb={1}>
             Капан за надежда
           </Typography>
           <Typography
