@@ -7,8 +7,13 @@ import {
   Chip,
   CardActions,
 } from '@mui/material';
+import { Story } from '../utils/types';
 
-function MainStoryPreview() {
+interface MainStoryPreviewProps {
+  story: Story;
+}
+
+function MainStoryPreview({ story }: MainStoryPreviewProps) {
   return (
     <Card
       sx={{
@@ -31,7 +36,7 @@ function MainStoryPreview() {
             transform: 'scale(1.02)',
           },
         }}
-        image={require('../img/globe.jpeg')}
+        image={story.imageUrl}
         alt="Live from space album cover"
       />
       <Box
@@ -56,7 +61,18 @@ function MainStoryPreview() {
               marginTop: 1,
             }}
           />
-          <Typography component="div" variant="h4" align="center" mb={1}>
+          <Typography
+            sx={{
+              cursor: 'pointer',
+              '&:hover': {
+                color: '#6b758a',
+              },
+            }}
+            component="div"
+            variant="h4"
+            align="center"
+            mb={1}
+          >
             Капан за надежда
           </Typography>
           <Typography

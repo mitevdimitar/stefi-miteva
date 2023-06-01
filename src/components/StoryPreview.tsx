@@ -4,13 +4,27 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { Story } from '../utils/types';
 
-export default function StoryPreview({ story }: any) {
+interface StoryPreviewProps {
+  story: Story;
+}
+
+export default function StoryPreview({ story }: StoryPreviewProps) {
   return (
     <Card sx={{ maxWidth: 345, borderRadius: '40px' }} elevation={0}>
       <CardMedia
-        sx={{ height: 200, borderRadius: '40px' }}
-        image={require(`../img/${story.img}`)}
+        sx={{
+          height: 200,
+          borderRadius: '40px',
+          margin: '5px',
+          cursor: 'pointer',
+          transition: 'all .2s ease-in-out',
+          '&:hover': {
+            transform: 'scale(1.02)',
+          },
+        }}
+        image={story.imageUrl}
         title="green iguana"
       />
       <CardContent>
@@ -23,7 +37,18 @@ export default function StoryPreview({ story }: any) {
             marginBottom: 1,
           }}
         />
-        <Typography gutterBottom component="div" variant="h5" align="center">
+        <Typography
+          sx={{
+            cursor: 'pointer',
+            '&:hover': {
+              color: '#6b758a',
+            },
+          }}
+          gutterBottom
+          component="div"
+          variant="h5"
+          align="center"
+        >
           {story.title}
         </Typography>
         <Typography
