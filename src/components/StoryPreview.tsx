@@ -5,14 +5,26 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Story } from '../utils/types';
+import { useTheme } from '@mui/material';
 
 interface StoryPreviewProps {
   story: Story;
 }
 
 export default function StoryPreview({ story }: StoryPreviewProps) {
+  const theme = useTheme();
+
   return (
-    <Card sx={{ maxWidth: 345, borderRadius: '40px' }} elevation={0}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        borderRadius: '40px',
+        [theme.breakpoints.down('sm')]: {
+          maxWidth: '100%',
+        },
+      }}
+      elevation={0}
+    >
       <CardMedia
         sx={{
           height: 200,
@@ -24,8 +36,8 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
             transform: 'scale(1.02)',
           },
         }}
-        image={story.imageUrl}
-        title="green iguana"
+        //image={story.imageUrl}
+        title={story.title}
       />
       <CardContent>
         <Chip

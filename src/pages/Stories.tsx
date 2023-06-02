@@ -260,7 +260,7 @@ function Stories() {
         <Grid container item>
           {remainingPageStories.map((story, i) => {
             return (
-              <Grid key={i} p={1} item xs={4}>
+              <Grid key={i} p={1} item xs={12} sm={6} md={4}>
                 <StoryPreview story={story} />
               </Grid>
             );

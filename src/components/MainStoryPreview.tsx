@@ -6,6 +6,7 @@ import {
   CardMedia,
   Chip,
   CardActions,
+  useTheme,
 } from '@mui/material';
 import { Story } from '../utils/types';
 
@@ -14,6 +15,8 @@ interface MainStoryPreviewProps {
 }
 
 function MainStoryPreview({ story }: MainStoryPreviewProps) {
+  const theme = useTheme();
+
   return (
     <Card
       sx={{
@@ -21,6 +24,10 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
         width: '100%',
         maxHeight: 320,
         borderRadius: '40px',
+        [theme.breakpoints.down('sm')]: {
+          maxHeight: 'none',
+          flexDirection: 'column',
+        },
       }}
       elevation={0}
     >
@@ -35,9 +42,12 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
           '&:hover': {
             transform: 'scale(1.02)',
           },
+          [theme.breakpoints.down('sm')]: {
+            width: '100%',
+          },
         }}
         image={story.imageUrl}
-        alt="Live from space album cover"
+        alt={story.title}
       />
       <Box
         sx={{
@@ -49,6 +59,8 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
           sx={{
             flex: '1 0 auto',
             padding: '6px 26px',
+            maxHeight: '80%',
+            overflow: 'hidden',
           }}
         >
           <Chip
