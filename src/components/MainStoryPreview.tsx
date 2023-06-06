@@ -11,11 +11,13 @@ import {
 import { Story } from '../utils/types';
 
 interface MainStoryPreviewProps {
-  story: Story;
+  story: Story | null;
 }
 
 function MainStoryPreview({ story }: MainStoryPreviewProps) {
   const theme = useTheme();
+
+  if (!story) return null;
 
   return (
     <Card
