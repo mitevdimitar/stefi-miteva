@@ -1,8 +1,8 @@
 import { Grid, Pagination } from '@mui/material';
-import StoryPreview from '../StoryPreview';
+import StoryPreview from './StoryPreview';
 import Layout from '../Layout';
 import React, { useContext } from 'react';
-import MainStoryPreview from '../MainStoryPreview';
+import MainStoryPreview from './MainStoryPreview';
 import { StoriesStore } from '../../providers/Stories';
 
 function StoriesContent() {
@@ -12,9 +12,6 @@ function StoriesContent() {
   };
   const { state } = useContext(StoriesStore);
   const { stories } = state;
-
-  console.log({ stories });
-
   const previewStory = stories ? stories[0] : null;
   const remainingPageStories = stories ? stories.slice(1) : [];
 

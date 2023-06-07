@@ -56,10 +56,8 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
     //extract stories
     const fetchedStories: Story[] = [];
     documentSnapshots.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
       fetchedStories.push(doc.data() as Story);
     });
-    console.log({ fetchedStories });
     dispatch({
       type: StoriesActionKind.GET_STORIES,
       payload: fetchedStories,

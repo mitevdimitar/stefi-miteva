@@ -8,7 +8,9 @@ import {
   CardActions,
   useTheme,
 } from '@mui/material';
-import { Story } from '../utils/types';
+import { Story } from '../../utils/types';
+import parse from 'html-react-parser';
+import { convertDateToDotFormat } from '../../utils/date';
 
 interface MainStoryPreviewProps {
   story: Story | null;
@@ -18,6 +20,8 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
   const theme = useTheme();
 
   if (!story) return null;
+
+  const dateCreated = convertDateToDotFormat(story.date_created);
 
   return (
     <Card
@@ -87,7 +91,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
             align="center"
             mb={1}
           >
-            Капан за надежда
+            {story.title}
           </Typography>
           <Typography
             component="div"
@@ -98,10 +102,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
               mb: 2,
             }}
           >
-            Колата прелиташе по неравния асфалт, като оставяше прах след себе
-            си, който беше раздухван от хладния повей на вятъра. Около нея се
-            извисяваха гордо върховете на ели и смърчове, оставящи лека сянка по
-            преминаващия автомобил.
+            {parse(story.excerpt)}
           </Typography>
         </CardContent>
         <CardActions
@@ -118,7 +119,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
               wdith: '100%',
             }}
           >
-            12.04.2023
+            {dateCreated}
           </Typography>
         </CardActions>
       </Box>

@@ -38,7 +38,7 @@ export function storiesReducer(state: StoriesState, action: StoriesAction) {
     case StoriesActionKind.GET_STORY:
       return {
         ...state,
-        //currentStory: payload,
+        currentStory: payload,
       };
     case StoriesActionKind.SET_STORY_PAGE:
       return {

@@ -4,8 +4,10 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Story } from '../utils/types';
+import { Story } from '../../utils/types';
 import { useTheme } from '@mui/material';
+import parse from 'html-react-parser';
+import { convertDateToDotFormat } from '../../utils/date';
 
 interface StoryPreviewProps {
   story: Story;
@@ -13,6 +15,8 @@ interface StoryPreviewProps {
 
 export default function StoryPreview({ story }: StoryPreviewProps) {
   const theme = useTheme();
+
+  const dateCreated = convertDateToDotFormat(story.date_created);
 
   return (
     <Card
@@ -36,7 +40,6 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
             transform: 'scale(1.02)',
           },
         }}
-        //image={story.imageUrl}
         title={story.title}
       />
       <CardContent>
@@ -70,9 +73,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
             overflow: 'hidden',
           }}
         >
-          Вълните ме обляха, а аз се почувствах щастлива и спокойна от игривите
-          гънки на водата. Тогава го забелязах. Беше много рядък и изключително
-          голям.
+          {parse(story.excerpt)}
         </Typography>
       </CardContent>
       <CardActions
@@ -89,7 +90,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
             wdith: '100%',
           }}
         >
-          12.04.2023
+          {dateCreated}
         </Typography>
       </CardActions>
     </Card>
