@@ -5,13 +5,21 @@ import {
   initalStoryState,
   storiesReducer,
 } from '../reducers/Stories';
-import { query, collection, orderBy, limit, getDocs } from 'firebase/firestore';
+import {
+  query,
+  collection,
+  orderBy,
+  limit,
+  getDocs,
+  startAfter,
+} from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { Story } from '../utils/types';
+import { QuerySnapshot } from 'firebase/firestore';
 
 interface StoriesContext {
   state: StoriesState;
-  onPageChange: (page: number) => void;
+  onLoadMore: () => void;
 }
 
 interface StoriesProviderProps {
@@ -20,49 +28,66 @@ interface StoriesProviderProps {
 
 export const StoriesStore = createContext<StoriesContext>({
   state: initalStoryState,
-  onPageChange: () => {},
+  onLoadMore: () => {},
 });
 
 const { Provider } = StoriesStore;
 
 export function StoriesProvider({ children }: StoriesProviderProps) {
   const [state, dispatch] = useReducer(storiesReducer, initalStoryState);
-  const { stories } = state;
+  const { stories, fullyFetched, lastVisible } = state;
 
-  const onPageChange = (page: number) => {
-    dispatch({
-      type: StoriesActionKind.SET_STORY_PAGE,
-      payload: page,
-    });
-  };
-
-  const getStories = useCallback(async () => {
-    const newQuery = query(
-      collection(db, 'stories'),
-      orderBy('date_created', 'desc'),
-      limit(10)
-    );
-
-    const documentSnapshots = await getDocs(newQuery);
-
-    // Get the last visible document
-    const lastVisible =
-      documentSnapshots.docs[documentSnapshots.docs.length - 1];
+  const setLastVisible = useCallback((snapshot: QuerySnapshot) => {
+    const lastVisible = snapshot.docs[snapshot.docs.length - 1];
     dispatch({
       type: StoriesActionKind.SET_LAST_VISIBLE,
       payload: lastVisible,
     });
-
-    //extract stories
-    const fetchedStories: Story[] = [];
-    documentSnapshots.forEach((doc) => {
-      fetchedStories.push(doc.data() as Story);
-    });
-    dispatch({
-      type: StoriesActionKind.GET_STORIES,
-      payload: fetchedStories,
-    });
   }, []);
+
+  const addStories = useCallback(
+    (snapshot: QuerySnapshot) => {
+      const fetchedStories: Story[] = stories ? [...stories] : [];
+      snapshot.forEach((doc) => {
+        fetchedStories.push(doc.data() as Story);
+      });
+      dispatch({
+        type: StoriesActionKind.GET_STORIES,
+        payload: fetchedStories,
+      });
+      if (snapshot.size < 9) {
+        dispatch({
+          type: StoriesActionKind.SET_FULLY_FETCHED,
+          payload: true,
+        });
+      }
+    },
+    [stories]
+  );
+
+  const getStories = useCallback(async () => {
+    const newQuery = lastVisible
+      ? query(
+          collection(db, 'stories'),
+          orderBy('date_created', 'desc'),
+          startAfter(lastVisible),
+          limit(9)
+        )
+      : query(
+          collection(db, 'stories'),
+          orderBy('date_created', 'desc'),
+          limit(10)
+        );
+
+    const documentSnapshot = await getDocs(newQuery);
+    setLastVisible(documentSnapshot);
+    addStories(documentSnapshot);
+  }, [addStories, setLastVisible, lastVisible]);
+
+  const onLoadMore = useCallback(() => {
+    if (fullyFetched) return;
+    getStories();
+  }, [fullyFetched, getStories]);
 
   useEffect(() => {
     if (!stories) {
@@ -74,7 +99,7 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
     <Provider
       value={{
         state,
-        onPageChange,
+        onLoadMore,
       }}
     >
       {children}

@@ -1,10 +1,10 @@
 import { Story } from '../utils/types';
 
 export enum StoriesActionKind {
-  SET_STORY_PAGE = 'SET_STORY_PAGE',
   GET_STORY = 'GET_STORY',
   GET_STORIES = 'GET_STORIES',
   SET_LAST_VISIBLE = 'SET_LAST)VISIBLE',
+  SET_FULLY_FETCHED = 'SET_FULLY_FETCHED',
 }
 
 // An interface for our actions
@@ -16,15 +16,15 @@ interface StoriesAction {
 export interface StoriesState {
   stories: Story[] | null;
   currentStory: Story | null;
-  page: number;
   lastVisible: any;
+  fullyFetched: boolean;
 }
 
 export const initalStoryState: StoriesState = {
   stories: null,
   currentStory: null,
-  page: 1,
   lastVisible: null,
+  fullyFetched: false,
 };
 
 export function storiesReducer(state: StoriesState, action: StoriesAction) {
@@ -40,15 +40,15 @@ export function storiesReducer(state: StoriesState, action: StoriesAction) {
         ...state,
         currentStory: payload,
       };
-    case StoriesActionKind.SET_STORY_PAGE:
-      return {
-        ...state,
-        page: payload,
-      };
     case StoriesActionKind.SET_LAST_VISIBLE:
       return {
         ...state,
         lastVisible: payload,
+      };
+    case StoriesActionKind.SET_FULLY_FETCHED:
+      return {
+        ...state,
+        fullyFetched: payload,
       };
     default:
       return state;
