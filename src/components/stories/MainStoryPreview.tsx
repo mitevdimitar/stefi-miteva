@@ -11,6 +11,7 @@ import {
 import { Story } from '../../utils/types';
 import parse from 'html-react-parser';
 import { convertDateToDotFormat } from '../../utils/date';
+import StoryChip from './StoryChip';
 
 interface MainStoryPreviewProps {
   story: Story | null;
@@ -69,16 +70,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
             overflow: 'hidden',
           }}
         >
-          <Chip
-            label="Ново"
-            sx={{
-              backgroundColor: '#EDE6FF',
-              color: '#8C78C4',
-              borderRadius: '8px',
-              marginBottom: 1,
-              marginTop: 1,
-            }}
-          />
+          <StoryChip label="Ново" />
           <Typography
             sx={{
               cursor: 'pointer',

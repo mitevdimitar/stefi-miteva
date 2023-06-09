@@ -8,6 +8,8 @@ import { Story } from '../../utils/types';
 import { useTheme } from '@mui/material';
 import parse from 'html-react-parser';
 import { convertDateToDotFormat } from '../../utils/date';
+import storyPreview from '../../img/StoryPreview.jpg';
+import StoryChip from './StoryChip';
 
 interface StoryPreviewProps {
   story: Story;
@@ -17,6 +19,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
   const theme = useTheme();
 
   const dateCreated = convertDateToDotFormat(story.date_created);
+  console.log({ story });
 
   return (
     <Card
@@ -41,17 +44,12 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
           },
         }}
         title={story.title}
+        image={!story.imageUrl ? story.imageUrl : storyPreview}
       />
       <CardContent>
-        <Chip
-          label="Трета награда"
-          sx={{
-            backgroundColor: '#D4FEF0',
-            color: '#6EA895',
-            borderRadius: '8px',
-            marginBottom: 1,
-          }}
-        />
+        {story.tags.map((tag, i) => {
+          return <StoryChip key={i} label={tag} />;
+        })}
         <Typography
           sx={{
             cursor: 'pointer',
