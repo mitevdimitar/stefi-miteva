@@ -1,5 +1,4 @@
 import Card from '@mui/material/Card';
-import Chip from '@mui/material/Chip';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -19,7 +18,6 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
   const theme = useTheme();
 
   const dateCreated = convertDateToDotFormat(story.date_created);
-  console.log({ story });
 
   return (
     <Card

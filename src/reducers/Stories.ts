@@ -1,6 +1,8 @@
 import { Story } from '../utils/types';
 
 export enum StoriesActionKind {
+  INITIATE_FETCHING = 'INITIATE_FETCHING',
+  FINISH_FETCHING = 'FINISH_FETCHING',
   GET_STORY = 'GET_STORY',
   GET_STORIES = 'GET_STORIES',
   SET_LAST_VISIBLE = 'SET_LAST)VISIBLE',
@@ -10,7 +12,7 @@ export enum StoriesActionKind {
 // An interface for our actions
 interface StoriesAction {
   type: StoriesActionKind;
-  payload: any;
+  payload?: any;
 }
 
 export interface StoriesState {
@@ -18,6 +20,8 @@ export interface StoriesState {
   currentStory: Story | null;
   lastVisible: any;
   fullyFetched: boolean;
+  loading: boolean;
+  error: null | string;
 }
 
 export const initalStoryState: StoriesState = {
@@ -25,30 +29,41 @@ export const initalStoryState: StoriesState = {
   currentStory: null,
   lastVisible: null,
   fullyFetched: false,
+  loading: false,
+  error: null,
 };
 
 export function storiesReducer(state: StoriesState, action: StoriesAction) {
-  const { type, payload } = action;
-  switch (type) {
+  switch (action.type) {
+    case StoriesActionKind.INITIATE_FETCHING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case StoriesActionKind.FINISH_FETCHING:
+      return {
+        ...state,
+        loading: false,
+      };
     case StoriesActionKind.GET_STORIES:
       return {
         ...state,
-        stories: payload,
+        stories: action.payload,
       };
     case StoriesActionKind.GET_STORY:
       return {
         ...state,
-        currentStory: payload,
+        currentStory: action.payload,
       };
     case StoriesActionKind.SET_LAST_VISIBLE:
       return {
         ...state,
-        lastVisible: payload,
+        lastVisible: action.payload,
       };
     case StoriesActionKind.SET_FULLY_FETCHED:
       return {
         ...state,
-        fullyFetched: payload,
+        fullyFetched: action.payload,
       };
     default:
       return state;

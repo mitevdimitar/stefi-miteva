@@ -66,6 +66,9 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
   );
 
   const getStories = useCallback(async () => {
+    dispatch({
+      type: StoriesActionKind.INITIATE_FETCHING,
+    });
     const newQuery = lastVisible
       ? query(
           collection(db, 'stories'),
@@ -82,6 +85,9 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
     const documentSnapshot = await getDocs(newQuery);
     setLastVisible(documentSnapshot);
     addStories(documentSnapshot);
+    dispatch({
+      type: StoriesActionKind.FINISH_FETCHING,
+    });
   }, [addStories, setLastVisible, lastVisible]);
 
   const onLoadMore = useCallback(() => {
