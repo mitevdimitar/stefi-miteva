@@ -5,8 +5,9 @@ export enum StoriesActionKind {
   FINISH_FETCHING = 'FINISH_FETCHING',
   GET_STORY = 'GET_STORY',
   GET_STORIES = 'GET_STORIES',
-  SET_LAST_VISIBLE = 'SET_LAST)VISIBLE',
+  SET_LAST_VISIBLE = 'SET_LAST_VISIBLE',
   SET_FULLY_FETCHED = 'SET_FULLY_FETCHED',
+  SET_CURRENT_STORY = 'SET_CURRENT_STORY',
 }
 
 // An interface for our actions
@@ -51,6 +52,11 @@ export function storiesReducer(state: StoriesState, action: StoriesAction) {
         stories: action.payload,
       };
     case StoriesActionKind.GET_STORY:
+      return {
+        ...state,
+        currentStory: action.payload,
+      };
+    case StoriesActionKind.SET_CURRENT_STORY:
       return {
         ...state,
         currentStory: action.payload,

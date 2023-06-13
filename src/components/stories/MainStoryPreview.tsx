@@ -11,6 +11,8 @@ import { Story } from '../../utils/types';
 import parse from 'html-react-parser';
 import { convertDateToDotFormat } from '../../utils/date';
 import StoryChip from './StoryChip';
+import { useContext } from 'react';
+import { StoriesStore } from '../../providers/Stories';
 
 interface MainStoryPreviewProps {
   story: Story | null;
@@ -18,6 +20,7 @@ interface MainStoryPreviewProps {
 
 function MainStoryPreview({ story }: MainStoryPreviewProps) {
   const theme = useTheme();
+  const { onStoryClick } = useContext(StoriesStore);
 
   if (!story) return null;
 
@@ -54,6 +57,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
         }}
         image={story.imageUrl}
         alt={story.title}
+        onClick={() => onStoryClick(story)}
       />
       <Box
         sx={{
@@ -81,6 +85,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
             variant="h4"
             align="center"
             mb={1}
+            onClick={() => onStoryClick(story)}
           >
             {story.title}
           </Typography>

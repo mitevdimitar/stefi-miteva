@@ -18,7 +18,7 @@ export default function Navigation() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/about" element={<About />} />
         <Route path="/stories" element={<Stories />} />
-        <Route path="/stories/:id" element={<Story />} />
+        <Route path="/stories/:slug" element={<Story />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>

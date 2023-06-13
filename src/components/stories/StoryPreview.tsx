@@ -9,6 +9,8 @@ import parse from 'html-react-parser';
 import { convertDateToDotFormat } from '../../utils/date';
 import storyPreview from '../../img/StoryPreview.jpg';
 import StoryChip from './StoryChip';
+import { useContext } from 'react';
+import { StoriesStore } from '../../providers/Stories';
 
 interface StoryPreviewProps {
   story: Story;
@@ -16,6 +18,7 @@ interface StoryPreviewProps {
 
 export default function StoryPreview({ story }: StoryPreviewProps) {
   const theme = useTheme();
+  const { onStoryClick } = useContext(StoriesStore);
 
   const dateCreated = convertDateToDotFormat(story.date_created);
 
@@ -43,6 +46,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
         }}
         title={story.title}
         image={!story.imageUrl ? story.imageUrl : storyPreview}
+        onClick={() => onStoryClick(story)}
       />
       <CardContent>
         {story.tags.map((tag, i) => {
@@ -59,6 +63,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
           component="div"
           variant="h5"
           align="center"
+          onClick={() => onStoryClick(story)}
         >
           {story.title}
         </Typography>
