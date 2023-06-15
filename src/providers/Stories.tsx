@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useReducer } from 'react';
+import { createContext, useCallback, useReducer } from 'react';
 import {
   StoriesActionKind,
   StoriesState,
@@ -16,12 +16,12 @@ import {
 import { db } from '../services/firebase';
 import { Story } from '../utils/types';
 import { QuerySnapshot } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
 
 interface StoriesContext {
   state: StoriesState;
   onLoadMore: () => void;
-  onStoryClick: (story: Story) => void;
+  setCurrentStory: (story: Story) => void;
+  getStories: () => void;
 }
 
 interface StoriesProviderProps {
@@ -31,7 +31,8 @@ interface StoriesProviderProps {
 export const StoriesStore = createContext<StoriesContext>({
   state: initalStoryState,
   onLoadMore: () => {},
-  onStoryClick: () => {},
+  setCurrentStory: () => {},
+  getStories: () => {},
 });
 
 const { Provider } = StoriesStore;
@@ -39,7 +40,6 @@ const { Provider } = StoriesStore;
 export function StoriesProvider({ children }: StoriesProviderProps) {
   const [state, dispatch] = useReducer(storiesReducer, initalStoryState);
   const { stories, fullyFetched, lastVisible } = state;
-  const navigate = useNavigate();
 
   const setLastVisible = useCallback((snapshot: QuerySnapshot) => {
     const lastVisible = snapshot.docs[snapshot.docs.length - 1];
@@ -99,18 +99,11 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
     getStories();
   }, [fullyFetched, getStories]);
 
-  useEffect(() => {
-    if (!stories) {
-      getStories();
-    }
-  }, [stories, getStories]);
-
-  const onStoryClick = (story: Story) => {
+  const setCurrentStory = (story: Story) => {
     dispatch({
       type: StoriesActionKind.SET_CURRENT_STORY,
       payload: story,
     });
-    navigate(`/stories/${story.slug}`);
   };
 
   return (
@@ -118,7 +111,8 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
       value={{
         state,
         onLoadMore,
-        onStoryClick,
+        setCurrentStory,
+        getStories,
       }}
     >
       {children}

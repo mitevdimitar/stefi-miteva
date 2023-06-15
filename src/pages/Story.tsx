@@ -1,11 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import Layout from '../components/Layout';
 import { Avatar, Chip, Grid, Typography } from '@mui/material';
-import { storage } from '../services/firebase';
-import { ref, getDownloadURL } from 'firebase/storage';
+import { StoriesStore } from '../providers/Stories';
+//import { storage } from '../services/firebase';
+//import { ref, getDownloadURL } from 'firebase/storage';
 
 function Story() {
-  const [imageUrl, setImageUrl] = useState('');
+  const imageUrl = null;
+  const { state } = useContext(StoriesStore);
+  console.log({ state });
+
+  /* const [imageUrl, setImageUrl] = useState('');
   console.log({ imageUrl });
 
   useEffect(() => {
@@ -14,7 +19,7 @@ function Story() {
       console.log({ url });
       setImageUrl(url);
     });
-  }, []);
+  }, []); */
 
   return (
     <Layout isHome={false}>

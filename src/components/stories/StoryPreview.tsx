@@ -11,6 +11,7 @@ import storyPreview from '../../img/StoryPreview.jpg';
 import StoryChip from './StoryChip';
 import { useContext } from 'react';
 import { StoriesStore } from '../../providers/Stories';
+import { useNavigate } from 'react-router-dom';
 
 interface StoryPreviewProps {
   story: Story;
@@ -18,9 +19,15 @@ interface StoryPreviewProps {
 
 export default function StoryPreview({ story }: StoryPreviewProps) {
   const theme = useTheme();
-  const { onStoryClick } = useContext(StoriesStore);
+  const { setCurrentStory } = useContext(StoriesStore);
+  const navigate = useNavigate();
 
   const dateCreated = convertDateToDotFormat(story.date_created);
+
+  const onStoryClick = () => {
+    setCurrentStory(story);
+    navigate(`/stories/${story.slug}`);
+  };
 
   return (
     <Card
@@ -46,7 +53,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
         }}
         title={story.title}
         image={!story.imageUrl ? story.imageUrl : storyPreview}
-        onClick={() => onStoryClick(story)}
+        onClick={onStoryClick}
       />
       <CardContent>
         {story.tags.map((tag, i) => {
@@ -63,7 +70,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
           component="div"
           variant="h5"
           align="center"
-          onClick={() => onStoryClick(story)}
+          onClick={onStoryClick}
         >
           {story.title}
         </Typography>

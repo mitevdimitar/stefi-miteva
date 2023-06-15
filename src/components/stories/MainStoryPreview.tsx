@@ -13,6 +13,7 @@ import { convertDateToDotFormat } from '../../utils/date';
 import StoryChip from './StoryChip';
 import { useContext } from 'react';
 import { StoriesStore } from '../../providers/Stories';
+import { useNavigate } from 'react-router-dom';
 
 interface MainStoryPreviewProps {
   story: Story | null;
@@ -20,11 +21,17 @@ interface MainStoryPreviewProps {
 
 function MainStoryPreview({ story }: MainStoryPreviewProps) {
   const theme = useTheme();
-  const { onStoryClick } = useContext(StoriesStore);
+  const { setCurrentStory } = useContext(StoriesStore);
+  const navigate = useNavigate();
 
   if (!story) return null;
 
   const dateCreated = convertDateToDotFormat(story.date_created);
+
+  const onStoryClick = () => {
+    setCurrentStory(story);
+    navigate(`/stories/${story.slug}`);
+  };
 
   return (
     <Card
@@ -57,7 +64,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
         }}
         image={story.imageUrl}
         alt={story.title}
-        onClick={() => onStoryClick(story)}
+        onClick={onStoryClick}
       />
       <Box
         sx={{
@@ -85,7 +92,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
             variant="h4"
             align="center"
             mb={1}
-            onClick={() => onStoryClick(story)}
+            onClick={onStoryClick}
           >
             {story.title}
           </Typography>

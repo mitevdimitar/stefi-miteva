@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
-import Stories from '../pages/Stories';
 import Illustrations from '../pages/Illustrations';
 import Books from '../pages/Books';
 import Feedback from '../pages/Feedback';
 import Contacts from '../pages/Contacts';
 import About from '../pages/About';
 import Story from '../pages/Story';
+import Stories from '../pages/Stories';
 
 export default function Navigation() {
   return (
