@@ -5,23 +5,16 @@ import {
   initalStoryState,
   storiesReducer,
 } from '../reducers/Stories';
-import {
-  query,
-  collection,
-  orderBy,
-  limit,
-  getDocs,
-  startAfter,
-} from 'firebase/firestore';
-import { db } from '../services/firebase';
 import { Story } from '../utils/types';
 import { QuerySnapshot } from 'firebase/firestore';
+import { getFirebaseStories, getStoryBySlug } from '../services/stories';
 
 interface StoriesContext {
   state: StoriesState;
   onLoadMore: () => void;
   setCurrentStory: (story: Story) => void;
   getStories: () => void;
+  getCurrentStory: (slug: string) => void;
 }
 
 interface StoriesProviderProps {
@@ -33,6 +26,7 @@ export const StoriesStore = createContext<StoriesContext>({
   onLoadMore: () => {},
   setCurrentStory: () => {},
   getStories: () => {},
+  getCurrentStory: () => {},
 });
 
 const { Provider } = StoriesStore;
@@ -73,20 +67,7 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
     dispatch({
       type: StoriesActionKind.INITIATE_FETCHING,
     });
-    const newQuery = lastVisible
-      ? query(
-          collection(db, 'stories'),
-          orderBy('date_created', 'desc'),
-          startAfter(lastVisible),
-          limit(9)
-        )
-      : query(
-          collection(db, 'stories'),
-          orderBy('date_created', 'desc'),
-          limit(10)
-        );
-
-    const documentSnapshot = await getDocs(newQuery);
+    const documentSnapshot = await getFirebaseStories(lastVisible);
     setLastVisible(documentSnapshot);
     addStories(documentSnapshot);
     dispatch({
@@ -106,6 +87,13 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
     });
   };
 
+  const getCurrentStory = useCallback(async (slug: string) => {
+    const matchedStory = await getStoryBySlug(slug);
+    if (matchedStory) {
+      setCurrentStory(matchedStory);
+    }
+  }, []);
+
   return (
     <Provider
       value={{
@@ -113,6 +101,7 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
         onLoadMore,
         setCurrentStory,
         getStories,
+        getCurrentStory,
       }}
     >
       {children}

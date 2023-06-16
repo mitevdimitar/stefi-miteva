@@ -1,14 +1,23 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { Avatar, Chip, Grid, Typography } from '@mui/material';
 import { StoriesStore } from '../providers/Stories';
+import { useParams } from 'react-router-dom';
 //import { storage } from '../services/firebase';
 //import { ref, getDownloadURL } from 'firebase/storage';
 
 function Story() {
   const imageUrl = null;
-  const { state } = useContext(StoriesStore);
-  console.log({ state });
+  const { state, getCurrentStory } = useContext(StoriesStore);
+  const { currentStory } = state;
+  const params = useParams();
+  console.log({ currentStory });
+
+  useEffect(() => {
+    if (!currentStory && params.slug) {
+      getCurrentStory(params.slug);
+    }
+  }, [currentStory, params]);
 
   /* const [imageUrl, setImageUrl] = useState('');
   console.log({ imageUrl });
