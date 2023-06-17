@@ -1,10 +1,11 @@
-import { Grid, CircularProgress } from '@mui/material';
+import { Grid } from '@mui/material';
 import StoryPreview from './StoryPreview';
 import Layout from '../Layout';
 import { useContext } from 'react';
 import MainStoryPreview from './MainStoryPreview';
 import { StoriesStore } from '../../providers/Stories';
 import LoadingButton from '@mui/lab/LoadingButton';
+import Loader from '../Loader';
 
 function StoriesContent() {
   const { state, onLoadMore } = useContext(StoriesStore);
@@ -15,9 +16,7 @@ function StoriesContent() {
   return (
     <Layout isHome={false}>
       {loading && !stories ? (
-        <Grid container alignItems="center" justifyContent="center">
-          <CircularProgress size={100} />
-        </Grid>
+        <Loader />
       ) : (
         <>
           <Grid container item mb={5}>

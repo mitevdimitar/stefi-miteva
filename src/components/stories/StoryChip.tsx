@@ -2,9 +2,10 @@ import { Chip } from '@mui/material';
 
 interface StoryChipProps {
   label: string;
+  styles?: React.CSSProperties;
 }
 
-function StoryChip({ label }: StoryChipProps) {
+function StoryChip({ label, styles }: StoryChipProps) {
   const getBackgroundColor = () => {
     switch (label) {
       case 'Ново':
@@ -46,6 +47,8 @@ function StoryChip({ label }: StoryChipProps) {
         color: getColor(),
         borderRadius: '8px',
         marginBottom: 1,
+        width: 'fit-content',
+        ...styles,
       }}
     />
   );

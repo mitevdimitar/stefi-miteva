@@ -8,7 +8,6 @@ import {
   where,
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
-import { Story } from '../utils/types';
 
 export const getFirebaseStories = async (lastVisible: any) => {
   const newQuery = lastVisible
@@ -35,7 +34,6 @@ export const getStoryBySlug = async (slug: string) => {
   let matchedStory: any = null;
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, ' => ', doc.data());
     matchedStory = doc.data();
   });
   return matchedStory;
