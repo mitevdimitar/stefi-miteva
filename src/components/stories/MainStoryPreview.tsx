@@ -58,6 +58,9 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
           '&:hover': {
             transform: 'scale(1.02)',
           },
+          [theme.breakpoints.up('md')]: {
+            width: '50%',
+          },
           [theme.breakpoints.down('sm')]: {
             width: '100%',
           },

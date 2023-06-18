@@ -31,7 +31,7 @@ function Layout({ children, isHome }: LayoutProps) {
                 minHeight: '100vh',
                 padding: '114px 10% 0 10%',
                 [theme.breakpoints.down('md')]: {
-                  padding: '54px 2% 0 2%',
+                  padding: '64px 2% 0 2%',
                 },
                 background: '#fffaf9',
               }

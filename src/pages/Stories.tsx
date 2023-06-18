@@ -6,7 +6,6 @@ function Stories() {
   const { state, getStories } = useContext(StoriesStore);
   const { stories } = state;
 
-  //this should go in stories page!
   useEffect(() => {
     if (!stories) {
       getStories();

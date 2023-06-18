@@ -32,7 +32,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
   return (
     <Card
       sx={{
-        maxWidth: 345,
+        //maxWidth: 345,
         borderRadius: '40px',
         [theme.breakpoints.down('sm')]: {
           maxWidth: '100%',
@@ -52,7 +52,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
           },
         }}
         title={story.title}
-        image={!story.imageUrl ? story.imageUrl : storyPreview}
+        image={story.imageUrl ? story.imageUrl : storyPreview}
         onClick={onStoryClick}
       />
       <CardContent>
