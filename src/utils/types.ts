@@ -12,3 +12,8 @@ export interface Story {
   tags: string[];
   title: string;
 }
+
+export interface Illustration {
+  img: string;
+  title: string;
+}
