@@ -6,11 +6,15 @@ import { useCallback, useEffect, useState } from 'react';
 import { storage } from '../services/firebase';
 import { getDownloadURL, listAll, ref } from 'firebase/storage';
 import { Illustration } from '../utils/types';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 function Illustrations() {
   const [illustrationLinks, setIllustrationLinks] = useState<Illustration[]>(
     []
   );
+  const theme = useTheme();
+  const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery('(max-width:500px)');
   const getIllustrations = useCallback(async () => {
     const listRef = ref(storage, 'illustrations');
 
@@ -37,10 +41,20 @@ function Illustrations() {
     getIllustrations();
   }, [getIllustrations]);
 
+  const getCols = () => {
+    if (isMobile) {
+      return 1;
+    }
+    if (isSm) {
+      return 2;
+    }
+    return 5;
+  };
+
   return (
     <Layout isHome={false}>
       <Box>
-        <ImageList variant="masonry" cols={5} gap={8}>
+        <ImageList variant="masonry" cols={getCols()} gap={8}>
           {illustrationLinks.map((item) => (
             <ImageListItem
               key={item.img}
