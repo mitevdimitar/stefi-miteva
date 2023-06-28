@@ -2,6 +2,7 @@ import Layout from '../components/Layout';
 import { Divider, Grid, Rating, Typography } from '@mui/material';
 import OpinionCard from '../components/OpinionCard';
 import ReviewCard from '../components/ReviewCard';
+import TitledDivider from '../components/TitledDivider';
 
 const opinions = [
   {
@@ -107,17 +108,7 @@ function Books() {
             </Grid>
           </Grid>
         </Grid>
-        <Divider
-          sx={{
-            width: '100%',
-            padding: 5,
-            '& span': {
-              transform: 'translateY(10px)',
-            },
-          }}
-        >
-          АНОТАЦИЯ
-        </Divider>
+        <TitledDivider title="АНОТАЦИЯ" />
         <Grid
           container
           item
@@ -149,17 +140,7 @@ function Books() {
             <img src={require('../img/page10.jpeg')} alt="Page of book" />
           </Grid>
         </Grid>
-        <Divider
-          sx={{
-            width: '100%',
-            padding: 5,
-            '& span': {
-              transform: 'translateY(10px)',
-            },
-          }}
-        >
-          ЧИТАТЕЛСКИ МНЕНИЯ
-        </Divider>
+        <TitledDivider title="ЧИТАТЕЛСКИ МНЕНИЯ" />
         <Grid
           container
           item
@@ -176,17 +157,7 @@ function Books() {
             return <OpinionCard key={i} opinion={opinion} />;
           })}
         </Grid>
-        <Divider
-          sx={{
-            width: '100%',
-            padding: 5,
-            '& span': {
-              transform: 'translateY(10px)',
-            },
-          }}
-        >
-          Ревюта
-        </Divider>
+        <TitledDivider title="РЕВЮТА" />
         <Grid
           container
           item
