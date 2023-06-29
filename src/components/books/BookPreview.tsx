@@ -107,10 +107,10 @@ function BookPreview() {
           {bookInfo.map((row, index) => {
             return (
               <Grid container item key={index}>
-                <Grid item xs={3}>
+                <Grid item xs={12} sm={5} md={3}>
                   {row.title}:
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={12} sm={7} md={9}>
                   {row.description}
                 </Grid>
               </Grid>
