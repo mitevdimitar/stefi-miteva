@@ -17,3 +17,10 @@ export interface Illustration {
   img: string;
   title: string;
 }
+
+export interface BookReview {
+  title: string;
+  link: string;
+  img: string;
+  description: string;
+}

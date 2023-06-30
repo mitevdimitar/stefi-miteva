@@ -1,10 +1,11 @@
 import Layout from '../components/Layout';
 import { Grid } from '@mui/material';
-import ReviewCard from '../components/ReviewCard';
+import ReviewCard from '../components/books/ReviewCard';
 import TitledDivider from '../components/TitledDivider';
 import BookPreview from '../components/books/BookPreview';
 import Annotation from '../components/books/Annotation';
 import Opinions from '../components/books/Opinions';
+import Reviews from '../components/books/Reviews';
 
 function Books() {
   return (
@@ -16,20 +17,7 @@ function Books() {
         <TitledDivider title="ЧИТАТЕЛСКИ МНЕНИЯ" />
         <Opinions />
         <TitledDivider title="РЕВЮТА" />
-        <Grid
-          container
-          item
-          direction="column"
-          sx={{
-            flexWrap: 'nowrap',
-            background: 'white',
-            height: 'fit-content',
-            borderRadius: 5,
-          }}
-          p={3}
-        >
-          <ReviewCard />
-        </Grid>
+        <Reviews />
       </Grid>
     </Layout>
   );
