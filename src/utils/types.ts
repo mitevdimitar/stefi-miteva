@@ -20,7 +20,8 @@ export interface Illustration {
 
 export interface BookReview {
   title: string;
-  link: string;
+  subTitle?: string;
+  link: string | null;
   img: string;
   description: string;
 }

@@ -49,7 +49,7 @@ function Opinions() {
       direction="column"
       sx={{
         flexWrap: 'nowrap',
-        background: 'white',
+        //background: 'white',
         height: 'fit-content',
         borderRadius: 5,
       }}

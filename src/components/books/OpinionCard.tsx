@@ -16,7 +16,7 @@ interface OpinionCardProps {
 
 export default function OpinionCard({ opinion }: OpinionCardProps) {
   return (
-    <Card sx={{ width: '100%', marginBottom: 3 }}>
+    <Card sx={{ width: '100%', marginBottom: 3, borderRadius: 5 }}>
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {opinion.text}
