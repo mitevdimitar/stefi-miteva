@@ -1,19 +1,20 @@
 import { Grid, Typography } from '@mui/material';
+import { useMobile } from '../../hooks/useMobile';
 
 function Annotation() {
+  const isMobile = useMobile();
   return (
     <Grid
       container
       item
       sx={{
-        flexWrap: 'nowrap',
         background: 'white',
         height: 'fit-content',
         borderRadius: 5,
       }}
       p={3}
     >
-      <Grid mt={2} mr={5}>
+      <Grid item xs={12} sm={6} md={8} pr={isMobile ? 0 : 3} mt={2}>
         <Typography align="justify">
           „Децата обичат да четат приказки. Но ето че има и такива, които
           измислят и пишат собствени истории. Въображението на Стефи ни води
@@ -28,8 +29,12 @@ function Annotation() {
         </Typography>
         <Typography mt={2}>Явор Цанев</Typography>
       </Grid>
-      <Grid item>
-        <img src={require('../../img/page10.jpeg')} alt="Page of book" />
+      <Grid xs={12} sm={6} md={4} pt={isMobile ? 3 : 0} item>
+        <img
+          style={{ width: '100%' }}
+          src={require('../../img/page10.jpeg')}
+          alt="Page of book"
+        />
       </Grid>
     </Grid>
   );

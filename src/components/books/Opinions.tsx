@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import OpinionCard from './OpinionCard';
+import { useMobile } from '../../hooks/useMobile';
 
 const opinions = [
   {
@@ -42,6 +43,7 @@ const opinions = [
 ];
 
 function Opinions() {
+  const isMobile = useMobile();
   return (
     <Grid
       container
@@ -53,7 +55,7 @@ function Opinions() {
         height: 'fit-content',
         borderRadius: 5,
       }}
-      p={3}
+      px={isMobile ? 3 : 0}
     >
       {opinions.map((opinion, i) => {
         return <OpinionCard key={i} opinion={opinion} />;

@@ -7,6 +7,7 @@ import Review4 from '../../img/Review4.png';
 import Review5 from '../../img/Review5.png';
 import Review6 from '../../img/Review6.png';
 import Review7 from '../../img/Review7.png';
+import { useMobile } from '../../hooks/useMobile';
 
 const reviews = [
   {
@@ -70,6 +71,7 @@ const reviews = [
 ];
 
 function Reviews() {
+  const isMobile = useMobile();
   return (
     <Grid
       container
@@ -78,7 +80,7 @@ function Reviews() {
         height: 'fit-content',
         borderRadius: 5,
       }}
-      p={3}
+      px={isMobile ? 3 : 0}
     >
       {reviews.map((review, i) => {
         return <ReviewCard key={i} review={review} />;

@@ -1,4 +1,5 @@
 import { Grid, Rating, Typography } from '@mui/material';
+import { useMobile } from '../../hooks/useMobile';
 
 const bookInfo = [
   {
@@ -38,25 +39,26 @@ const bookInfo = [
 ];
 
 function BookPreview() {
+  const isMobile = useMobile();
   return (
     <Grid
       container
       item
       sx={{
-        flexWrap: 'nowrap',
         background: 'white',
         height: 'fit-content',
         borderRadius: 5,
       }}
       p={3}
     >
-      <Grid item>
+      <Grid item xs={12} sm={6} md={4} pb={isMobile ? 3 : 0}>
         <img
+          style={{ width: '100%' }}
           src={require('../../img/cover_second.jpeg')}
           alt="Cover second edition"
         />
       </Grid>
-      <Grid item ml={3}>
+      <Grid item xs={12} sm={6} md={8} pl={isMobile ? 0 : 3}>
         <Grid container>
           <Rating name="read-only" value={5} readOnly sx={{ mr: 2 }} />
           <Grid sx={{ color: '#483222' }} mr={3}>
@@ -83,23 +85,26 @@ function BookPreview() {
               награда „Бисерче вълшебно“ 2020.
             </Typography>
           </Grid>
-          <Grid
-            container
-            item
-            xs={2}
-            alignItems="center"
-            justifyContent="flex-end"
-            mt="-15px"
-          >
-            <img
-              height="80px"
-              src={require('../../img/logo_biserche.png')}
-              alt="logo biserche"
-            />
-          </Grid>
+          {!isMobile && (
+            <Grid
+              container
+              item
+              xs={2}
+              alignItems="center"
+              justifyContent="flex-end"
+              mt="-15px"
+            >
+              <img
+                height="80px"
+                src={require('../../img/logo_biserche.png')}
+                alt="logo biserche"
+              />
+            </Grid>
+          )}
         </Grid>
         <Grid
           container
+          pt={isMobile ? 3 : 0}
           sx={{
             fontSize: '14px',
           }}
@@ -107,10 +112,10 @@ function BookPreview() {
           {bookInfo.map((row, index) => {
             return (
               <Grid container item key={index}>
-                <Grid item xs={12} sm={5} md={3}>
+                <Grid item /* xs={12}  */ xs={5} md={3}>
                   {row.title}:
                 </Grid>
-                <Grid item xs={12} sm={7} md={9}>
+                <Grid item /* xs={12}  */ xs={7} md={9}>
                   {row.description}
                 </Grid>
               </Grid>
