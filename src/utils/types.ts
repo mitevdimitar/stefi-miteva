@@ -25,3 +25,11 @@ export interface BookReview {
   img: string;
   description: string;
 }
+
+export interface FeedbackType {
+  mediaLogo: string;
+  title: string;
+  content: string;
+  link: string;
+  previewImg: string;
+}
