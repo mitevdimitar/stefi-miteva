@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { FeedbackType } from '../utils/types';
+import { useMobile } from '../hooks/useMobile';
 
 interface FeedbackProps {
   feedback: FeedbackType;
@@ -15,24 +16,31 @@ interface FeedbackProps {
 
 function Feedback({ feedback }: FeedbackProps) {
   const { mediaLogo, title, content, link, previewImg } = feedback;
+  const isMobile = useMobile();
   return (
     <Card
       sx={{
-        //minHeight: 250,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         position: 'relative',
-        padding: 3,
+        padding: isMobile ? 2 : 3,
         borderRadius: 4,
         cursor: 'pointer',
-        marginTop: 4,
+        marginTop: isMobile ? 4 : 0,
+        marginBottom: isMobile ? 0 : 4,
       }}
       onClick={() => window.open(link)}
     >
-      <Box sx={{ display: 'flex', flexDirection: 'column', width: '75%' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: isMobile ? '100%' : '75%',
+        }}
+      >
         <Stack direction="row" alignItems={'center'} mb={1.5}>
-          <img src={mediaLogo} alt="media logo" height="30px" />
+          {!isMobile && <img src={mediaLogo} alt="media logo" height="30px" />}
           <CardHeader
             title={title}
             sx={{
@@ -42,31 +50,46 @@ function Feedback({ feedback }: FeedbackProps) {
             }}
           />
         </Stack>
+        {isMobile && (
+          <CardMedia
+            sx={{
+              padding: '0 12px',
+              cursor: 'pointer',
+              maxHeight: '200',
+              marginBottom: 2,
+            }}
+            component="img"
+            image={previewImg}
+            alt="Moreto article"
+          />
+        )}
         <CardContent sx={{ padding: 0, paddingBottom: '16px !important' }}>
           <Typography variant="body2" color="text.secondary" align="justify">
             {content}
           </Typography>
         </CardContent>
       </Box>
-      <Box
-        sx={{
-          width: '20%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <CardMedia
+      {!isMobile && (
+        <Box
           sx={{
-            padding: '0 12px',
-            cursor: 'pointer',
-            maxHeight: '200',
+            width: '20%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
           }}
-          component="img"
-          image={previewImg}
-          alt="Moreto article"
-        />
-      </Box>
+        >
+          <CardMedia
+            sx={{
+              padding: '0 12px',
+              cursor: 'pointer',
+              maxHeight: '200',
+            }}
+            component="img"
+            image={previewImg}
+            alt="Moreto article"
+          />
+        </Box>
+      )}
     </Card>
   );
 }
