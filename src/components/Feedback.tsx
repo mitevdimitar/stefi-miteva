@@ -20,7 +20,7 @@ function Feedback({ feedback }: FeedbackProps) {
       sx={{
         //minHeight: 250,
         display: 'flex',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         justifyContent: 'space-between',
         position: 'relative',
         padding: 3,
@@ -31,7 +31,7 @@ function Feedback({ feedback }: FeedbackProps) {
       onClick={() => window.open(link)}
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', width: '75%' }}>
-        <Stack direction="row" alignItems={'center'}>
+        <Stack direction="row" alignItems={'center'} mb={1.5}>
           <img src={mediaLogo} alt="media logo" height="30px" />
           <CardHeader
             title={title}
