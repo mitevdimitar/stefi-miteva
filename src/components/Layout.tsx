@@ -5,9 +5,10 @@ import Menu from '../components/Menu';
 interface LayoutProps {
   children: JSX.Element;
   isHome: boolean;
+  isContacts?: boolean;
 }
 
-function Layout({ children, isHome }: LayoutProps) {
+function Layout({ children, isHome, isContacts }: LayoutProps) {
   const theme = useTheme();
   return (
     <Grid
@@ -31,7 +32,7 @@ function Layout({ children, isHome }: LayoutProps) {
                 minHeight: '100vh',
                 padding: '114px 10% 5% 10%',
                 [theme.breakpoints.down('md')]: {
-                  padding: '64px 5% 2%',
+                  padding: isContacts ? '54px 0 0' : '64px 5% 2%',
                 },
                 background: '#fffaf9',
               }

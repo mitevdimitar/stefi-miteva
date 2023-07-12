@@ -1,25 +1,42 @@
 import Layout from '../components/Layout';
-import { Button, FormControl, Grid, TextField } from '@mui/material';
+import { Button, FormControl, Grid, TextField, styled } from '@mui/material';
 import ContactsBackground from '../img/contacts_background_full.jpg';
+import { useMobile } from '../hooks/useMobile';
+
+const CustomTextField = styled(TextField)(({ theme }) => {
+  return {
+    [theme.breakpoints.up('md')]: {
+      width: '70%',
+    },
+    [theme.breakpoints.down('md')]: {
+      width: '90%',
+    },
+    '& .MuiInputBase-root': {
+      borderRadius: '14px',
+    },
+  };
+});
 
 function Contacts() {
+  const isMobile = useMobile();
+
   return (
-    <Layout isHome={false}>
+    <Layout isHome={false} isContacts={true}>
       <Grid
         container
-        mb={10}
+        mb={isMobile ? 0 : 10}
         sx={{
-          //background: 'white',
           backgroundImage: `url(${ContactsBackground})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          borderRadius: 10,
-          padding: '30px',
+          borderRadius: isMobile ? 0 : 10,
+          padding: 3.5,
+          paddingTop: isMobile ? 7.5 : 3.5,
         }}
       >
         <Grid
           item
-          xs={6}
+          xs={isMobile ? 12 : 6}
           sx={{
             background: 'white',
             borderRadius: 5,
@@ -34,36 +51,9 @@ function Contacts() {
               alignItems: 'center',
             }}
           >
-            <TextField
-              sx={{
-                width: '70%',
-                '& .MuiInputBase-root': {
-                  borderRadius: '14px',
-                  //background: 'white',
-                },
-              }}
-              id="name"
-              placeholder="Име"
-            />
-            <TextField
-              sx={{
-                width: '70%',
-                '& .MuiInputBase-root': {
-                  borderRadius: '14px',
-                  //background: 'white',
-                },
-              }}
-              id="email"
-              placeholder="E-mail"
-            />
-            <TextField
-              sx={{
-                width: '70%',
-                '& .MuiInputBase-root': {
-                  borderRadius: '14px',
-                  //background: 'white',
-                },
-              }}
+            <CustomTextField id="name" placeholder="Име" />
+            <CustomTextField id="email" placeholder="E-mail" />
+            <CustomTextField
               id="message"
               placeholder="Съобщение"
               multiline
@@ -90,10 +80,6 @@ function Contacts() {
           xs={5.7}
           ml={2}
           sx={{
-            //background: '#588EAC',
-            /* backgroundImage: `url(${ContactsBackground})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover', */
             borderRadius: 10,
           }}
         ></Grid>

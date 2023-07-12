@@ -54,7 +54,6 @@ function Feedback({ feedback }: FeedbackProps) {
           <CardMedia
             sx={{
               padding: '0 12px',
-              cursor: 'pointer',
               maxHeight: '200',
               marginBottom: 2,
             }}
@@ -81,7 +80,6 @@ function Feedback({ feedback }: FeedbackProps) {
           <CardMedia
             sx={{
               padding: '0 12px',
-              cursor: 'pointer',
               maxHeight: '200',
             }}
             component="img"
