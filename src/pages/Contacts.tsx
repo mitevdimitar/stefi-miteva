@@ -1,21 +1,8 @@
 import Layout from '../components/Layout';
-import { Button, FormControl, Grid, TextField, styled } from '@mui/material';
+import { Grid } from '@mui/material';
 import ContactsBackground from '../img/contacts_background_full.jpg';
 import { useMobile } from '../hooks/useMobile';
-
-const CustomTextField = styled(TextField)(({ theme }) => {
-  return {
-    [theme.breakpoints.up('md')]: {
-      width: '70%',
-    },
-    [theme.breakpoints.down('md')]: {
-      width: '90%',
-    },
-    '& .MuiInputBase-root': {
-      borderRadius: '14px',
-    },
-  };
-});
+import ContactForm from '../components/ContactForm';
 
 function Contacts() {
   const isMobile = useMobile();
@@ -24,7 +11,6 @@ function Contacts() {
     <Layout isHome={false} isContacts={true}>
       <Grid
         container
-        mb={isMobile ? 0 : 10}
         sx={{
           backgroundImage: `url(${ContactsBackground})`,
           backgroundRepeat: 'no-repeat',
@@ -43,37 +29,7 @@ function Contacts() {
             opacity: 0.9,
           }}
         >
-          <FormControl
-            fullWidth
-            sx={{
-              height: '100%',
-              justifyContent: 'space-evenly',
-              alignItems: 'center',
-            }}
-          >
-            <CustomTextField id="name" placeholder="Име" />
-            <CustomTextField id="email" placeholder="E-mail" />
-            <CustomTextField
-              id="message"
-              placeholder="Съобщение"
-              multiline
-              rows={6}
-            />
-            <Button
-              variant="contained"
-              sx={{
-                width: '50%',
-                borderRadius: '14px' /* background: '#588EAC' */,
-                background: '#7FA0A5',
-                '&: hover': {
-                  background: '#6A97AA',
-                },
-              }}
-            >
-              Изпрати
-            </Button>
-            {/* <div>или</div> */}
-          </FormControl>
+          <ContactForm />
         </Grid>
         <Grid
           item
