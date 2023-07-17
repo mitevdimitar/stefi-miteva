@@ -1,6 +1,5 @@
 import Layout from '../components/Layout';
 import { Grid } from '@mui/material';
-import ReviewCard from '../components/books/ReviewCard';
 import TitledDivider from '../components/TitledDivider';
 import BookPreview from '../components/books/BookPreview';
 import Annotation from '../components/books/Annotation';
