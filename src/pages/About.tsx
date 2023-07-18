@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import {
+  Box,
   Grid,
   List,
   ListItem,
@@ -8,8 +9,75 @@ import {
   Typography,
 } from '@mui/material';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import { Link } from 'react-router-dom';
+
+interface Award {
+  text: string;
+  linkName?: string;
+  linkUrl?: string;
+}
+
+const awards = [
+  {
+    text: 'Юни 2023г.- 1-во място във 2-ра възрастова група, раздел „Проза“ в Националния конкурс „Аз и моите приятели – животните”, гр. София с разказа ',
+    linkName: 'Горско изпитание',
+    linkUrl: 'forest-adventure',
+  },
+  {
+    text: 'Октомври 2022г. – 1-во място във 2-ра възрастова група, раздел „Проза“ на Петнадесетия национален ученически конкурс за литературно творчество и журналистика „Стоян Михайловски“ – Русе с разказа ',
+    linkName: 'Приятелство дебне отвсякъде',
+    linkUrl: 'friendship-is-everywhere',
+  },
+  {
+    text: 'Май 2021г. – 1-во място в 1-ва възрастова група в Националния конкурс  „Обичам те, море” с разказа ',
+    linkName: 'Един вълшебен свят',
+    linkUrl: 'one-magic-world',
+  },
+  {
+    text: 'Април 2021г. – 1-во място в 1-ва възрастова група в Националния конкурс „Пролетта събужда отново за живот света”, организиран от НЧ „Добри Войников – 1956”, гр. Шумен, с „Есе за природата”',
+  },
+  {
+    text: 'Март 2021г. –  2-ро място за двата сонетни венци на възпитаниците на ЛК „Касталия”, сред които е и Стефи за участието си в 17-ти Международен конкурс за поезия и театър „Castello di Duino”, гр. Триест, Италия, на тема  „Там, където се ражда музиката”',
+  },
+  {
+    text: 'Декември 2020г. – 3-то място в раздел „Поезия” в Националния конкурс за православна поезия и проза „Рождеството на Спасителя” със стихотворението „Коледни мечти”',
+  },
+  {
+    text: 'Ноември 2020г. – 2-ра награда в Националния литературен конкурс  „Морето, морето, морето…“ с разказа ',
+    linkName: 'Тайнственият свят на русалките',
+    linkUrl: 'mysterious-mermaid-world',
+  },
+  {
+    text: 'Май 2020г. – 1-ва награда в 1-ва възрастова група в Националния литературен конкурс „Неразказаните истории на един ловец на приключения“, съпътстващ ежегодния Национален фестивал на детската книга в гр. Сливен с  разказа ',
+    linkName: 'Моите опасни приключения: Килерът на отмъщенията',
+    linkUrl: 'my-dangerous-adventures1',
+  },
+];
 
 function About() {
+  const renderAward = (award: Award) => {
+    return (
+      <Box>
+        <Typography>
+          {award.text}
+          <span>
+            {award.linkName && (
+              <Link
+                style={{
+                  textDecoration: 'none',
+                  color: '#568DAD',
+                }}
+                to={`/stories/${award.linkUrl}`}
+              >
+                {award.linkName}
+              </Link>
+            )}
+          </span>
+        </Typography>
+      </Box>
+    );
+  };
+
   return (
     <Layout isHome={false}>
       <Grid
@@ -17,7 +85,7 @@ function About() {
         direction="column"
         sx={{
           flexWrap: 'nowrap',
-          background: 'white',
+          //background: 'white',
           height: 'fit-content',
           borderRadius: 5,
         }}
@@ -52,22 +120,16 @@ function About() {
         </Typography>
         <Grid container>
           <List>
-            <ListItem disablePadding>
-              <ListItemIcon>
-                <EmojiEventsIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText
-                primary={`Октомври 2022г. – 1-во място във 2-ра възрастова група, раздел „Проза“ на Петнадесетия национален ученически конкурс за литературно творчество и журналистика „Стоян Михайловски“ – Русе.`}
-              />
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemIcon>
-                <EmojiEventsIcon fontSize="small" />
-              </ListItemIcon>
-              <ListItemText
-                primary={`Май 2021г. – 1-во място в 1-ва възрастова група в Националния конкурс  „Обичам те, море” с разказа Един вълшебен свят.`}
-              />
-            </ListItem>
+            {awards.map((award, i) => {
+              return (
+                <ListItem key={i} disablePadding>
+                  <ListItemIcon>
+                    <EmojiEventsIcon fontSize="small" />
+                  </ListItemIcon>
+                  <ListItemText primary={renderAward(award)} />
+                </ListItem>
+              );
+            })}
           </List>
         </Grid>
       </Grid>
