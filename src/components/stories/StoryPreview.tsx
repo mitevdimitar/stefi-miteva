@@ -34,6 +34,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
       sx={{
         //maxWidth: 345,
         borderRadius: '40px',
+        background: 'transparent',
         [theme.breakpoints.down('sm')]: {
           maxWidth: '100%',
         },
@@ -84,10 +85,11 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
           {parse(story.excerpt)}
         </Typography>
       </CardContent>
-      <CardActions
+      {/* <CardActions
         sx={{
           justifyContent: 'flex-end',
           padding: '20px',
+          paddingTop: 0,
         }}
       >
         <Typography
@@ -95,12 +97,12 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
           sx={{
             color: '#8C78C4',
             fontSize: '0.8rem',
-            wdith: '100%',
+            width: '100%',
           }}
         >
           {dateCreated}
         </Typography>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }

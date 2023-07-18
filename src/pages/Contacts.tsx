@@ -24,7 +24,7 @@ function Contacts() {
           item
           xs={isMobile ? 12 : 6}
           sx={{
-            background: 'white',
+            background: '#fffaf9',
             borderRadius: 5,
             opacity: 0.9,
           }}

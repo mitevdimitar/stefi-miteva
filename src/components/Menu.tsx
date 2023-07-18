@@ -13,13 +13,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import { storage } from '../services/firebase';
 
 interface MenuProps {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
   isHome: boolean;
 }
@@ -28,16 +23,15 @@ const drawerWidth = 240;
 const navItems = [
   { name: 'Творби', link: '/stories' },
   { name: 'Рисунки', link: '/illustrations' },
-  { name: 'Книги', link: '/books' },
+  { name: 'Осмото кралство', link: '/books' },
   { name: 'Отзиви', link: '/feedback' },
+  { name: 'За Стефи', link: '/about' },
   { name: 'Контакти', link: '/contacts' },
 ];
 
 export default function Menu(props: MenuProps) {
   const { window, isHome } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  console.log({ storage });
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -94,8 +88,31 @@ export default function Menu(props: MenuProps) {
             }}
           >
             {navItems.map((item) => (
-              <Link key={item.name} to={item.link}>
-                <Button sx={{ color: '#fff', fontWeight: '600' }}>
+              <Link
+                /* style={{
+                  //borderBottom: `2px solid black`,
+                  paddingBottom: 10,
+                  '&:hover': {
+                    borderBottom: '2px solid #fff',
+                  },
+                }} */
+                key={item.name}
+                to={item.link}
+              >
+                <Button
+                  variant="text"
+                  sx={{
+                    color: '#fff',
+                    fontWeight: '600',
+                    fontSize: '1rem',
+                    textTransform: 'none',
+                    borderBottom: '2px solid transparent',
+                    borderRadius: 0,
+                    '&:hover': {
+                      borderBottom: '2px solid #fff',
+                    },
+                  }}
+                >
                   {item.name}
                 </Button>
               </Link>

@@ -40,6 +40,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
         width: '100%',
         maxHeight: 320,
         borderRadius: '40px',
+        backgroundColor: '#A4AF9F',
         [theme.breakpoints.down('sm')]: {
           maxHeight: 'none',
           flexDirection: 'column',
@@ -83,7 +84,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
             overflow: 'hidden',
           }}
         >
-          <StoryChip label="Ново" />
+          <StoryChip label="Ново" isPreview={true} />
           <Typography
             sx={{
               cursor: 'pointer',
@@ -104,6 +105,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
             align="justify"
             sx={{
               overflow: 'hidden',
+              color: '#3c424f',
               //whiteSpace: 'nowrap',
               mb: 2,
             }}
@@ -120,7 +122,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
           <Typography
             align="right"
             sx={{
-              color: '#8C78C4',
+              color: 'white',
               fontSize: '0.8rem',
               wdith: '100%',
             }}
