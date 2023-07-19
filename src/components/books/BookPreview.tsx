@@ -45,7 +45,7 @@ function BookPreview() {
       container
       item
       sx={{
-        background: 'white',
+        //background: 'white',
         height: 'fit-content',
         borderRadius: 5,
       }}

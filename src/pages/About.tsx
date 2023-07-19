@@ -10,6 +10,8 @@ import {
 } from '@mui/material';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { Link } from 'react-router-dom';
+import YoutubeEmbed from '../components/YouTubeEmbed';
+import { useMobile } from '../hooks/useMobile';
 
 interface Award {
   text: string;
@@ -55,6 +57,8 @@ const awards = [
 ];
 
 function About() {
+  const isMobile = useMobile();
+
   const renderAward = (award: Award) => {
     return (
       <Box>
@@ -85,7 +89,6 @@ function About() {
         direction="column"
         sx={{
           flexWrap: 'nowrap',
-          //background: 'white',
           height: 'fit-content',
           borderRadius: 5,
         }}
@@ -98,7 +101,8 @@ function About() {
             style={{
               float: 'left',
               borderRadius: 10,
-              marginRight: 25,
+              marginRight: isMobile ? 0 : 25,
+              marginBottom: isMobile ? 15 : 0,
               maxWidth: '100%',
             }}
           />
@@ -118,12 +122,12 @@ function About() {
           Септември 2020г. Стефи е член на ЛК „Касталия“ към ЦПЛР – Общински
           детски комплекс, гр. Варна
         </Typography>
-        <Grid container>
+        <Grid container mb={2}>
           <List>
             {awards.map((award, i) => {
               return (
                 <ListItem key={i} disablePadding>
-                  <ListItemIcon>
+                  <ListItemIcon sx={{ minWidth: isMobile ? 36 : 56 }}>
                     <EmojiEventsIcon fontSize="small" />
                   </ListItemIcon>
                   <ListItemText primary={renderAward(award)} />
@@ -132,9 +136,9 @@ function About() {
             })}
           </List>
         </Grid>
+        <YoutubeEmbed embedId="r5hp0BdPeuQ" />
       </Grid>
     </Layout>
   );
 }
-
 export default About;
