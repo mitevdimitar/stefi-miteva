@@ -4,7 +4,7 @@ interface YouTubeEmbedProps {
   embedId: string;
 }
 
-const YouTubeContainer = styled(Grid)(({ theme }) => ({
+const YouTubeContainer = styled(Grid)(() => ({
   overflow: 'hidden',
   paddingBottom: '56.25%',
   position: 'relative',

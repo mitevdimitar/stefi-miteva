@@ -1,6 +1,7 @@
 import { Grid, useTheme } from '@mui/material';
 import Background from '../img/Background.jpg';
 import Menu from '../components/Menu';
+import Footer from './Footer';
 
 interface LayoutProps {
   children: JSX.Element;
@@ -41,6 +42,7 @@ function Layout({ children, isHome, isContacts }: LayoutProps) {
       >
         {children}
       </Grid>
+      {!isHome && <Footer />}
     </Grid>
   );
 }
