@@ -1,7 +1,9 @@
 import { Grid, useTheme } from '@mui/material';
 import Background from '../img/Background.jpg';
+import BackgroundMobile from '../img/Background-mobile.jpg';
 import Menu from '../components/Menu';
 import Footer from './Footer';
+import { useMobile } from '../hooks/useMobile';
 
 interface LayoutProps {
   children: JSX.Element;
@@ -11,11 +13,17 @@ interface LayoutProps {
 
 function Layout({ children, isHome, isContacts }: LayoutProps) {
   const theme = useTheme();
+  const isMobile = useMobile();
+
   return (
     <Grid
       sx={{
         backgroundColor: isHome ? `#C7BF85` : 'none',
-        backgroundImage: isHome ? `url(${Background})` : 'none',
+        backgroundImage: isHome
+          ? isMobile
+            ? `url(${BackgroundMobile})`
+            : `url(${Background})`
+          : 'none',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         height: isHome ? '100vh' : 'auto',

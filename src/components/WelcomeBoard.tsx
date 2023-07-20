@@ -1,6 +1,10 @@
-import { Button, Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography, useTheme } from '@mui/material';
+import { useMobile } from '../hooks/useMobile';
 
 export default function WelcomeBoard() {
+  const isMobile = useMobile();
+  const theme = useTheme();
+
   return (
     <Grid
       container
@@ -19,10 +23,10 @@ export default function WelcomeBoard() {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography variant="h2" color="white" fontWeight={500}>
+        <Typography variant="h2" color="white" fontWeight={500} align="center">
           Приказките на Стефи
         </Typography>
-        <Typography variant="h5" color="white">
+        <Typography variant="h5" color="white" align="center">
           Авторски детски приказки
         </Typography>
         <Grid container item alignItems="center" justifyContent="center" mt={3}>
@@ -30,11 +34,13 @@ export default function WelcomeBoard() {
             variant="contained"
             sx={{
               textTransform: 'none',
-              borderRadius: 20,
               fontSize: '1rem',
               padding: '10px 30px',
-              marginRight: 5,
+              marginRight: isMobile ? 0 : 5,
+              marginBottom: isMobile ? 1 : 0,
               fontWeight: '600',
+              border: `2px solid ${theme?.palette.primary.main}`,
+              borderRadius: 20,
             }}
           >
             За Oсмото кралство
@@ -44,8 +50,8 @@ export default function WelcomeBoard() {
             sx={{
               color: 'white',
               border: '2px solid white',
-              textTransform: 'none',
               borderRadius: '20px',
+              textTransform: 'none',
               fontSize: '1rem',
               padding: '10px 30px',
               '&: hover': {

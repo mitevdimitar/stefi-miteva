@@ -19,7 +19,7 @@ interface MenuProps {
   isHome: boolean;
 }
 
-const drawerWidth = 240;
+const drawerWidth = '70%';
 const navItems = [
   { name: 'Творби', link: '/stories' },
   { name: 'Рисунки', link: '/illustrations' },
@@ -44,7 +44,12 @@ export default function Menu(props: MenuProps) {
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item.name} />
+              <ListItemText
+                sx={{
+                  '& span': { color: 'white', fontSize: '1.3rem' },
+                }}
+                primary={item.name}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -135,6 +140,9 @@ export default function Menu(props: MenuProps) {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: drawerWidth,
+              background:
+                'radial-gradient(circle, rgba(171,179,158,1) 0%, rgba(83,141,174,1) 100%)',
+              color: 'white',
             },
           }}
         >

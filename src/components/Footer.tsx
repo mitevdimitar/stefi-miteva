@@ -4,6 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import GMobiledataIcon from '@mui/icons-material/GMobiledata';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { useMobile } from '../hooks/useMobile';
 
 const StyledIconButton = styled(IconButton)(() => ({
   color: 'white',
@@ -12,6 +13,8 @@ const StyledIconButton = styled(IconButton)(() => ({
 }));
 
 function Footer() {
+  const isMobile = useMobile();
+
   return (
     <Grid
       container
@@ -23,19 +26,32 @@ function Footer() {
         color: 'white',
       }}
     >
-      <Grid item xs={4}>
-        © 2023 Приказките на Стефи
-      </Grid>
       <Grid
         container
         item
-        xs={4}
-        justifyContent={'center'}
-        sx={{ fontFamily: "'Norican', cursive", fontSize: 20 }}
+        xs={isMobile ? 12 : 4}
+        justifyContent={isMobile ? 'center' : 'flex-start'}
+        mb={isMobile ? 1 : 0}
       >
-        DM Web Services
+        © 2023 Приказките на Стефи
       </Grid>
-      <Grid container item xs={4} justifyContent={'flex-end'}>
+      {!isMobile && (
+        <Grid
+          container
+          item
+          xs={4}
+          justifyContent={'center'}
+          sx={{ fontFamily: "'Norican', cursive", fontSize: 20 }}
+        >
+          DM Web Services
+        </Grid>
+      )}
+      <Grid
+        container
+        item
+        xs={isMobile ? 12 : 4}
+        justifyContent={isMobile ? 'center' : 'flex-end'}
+      >
         <StyledIconButton
           onClick={() =>
             window.open('https://www.facebook.com/PrikazkiteNaStefi', '_blank')
