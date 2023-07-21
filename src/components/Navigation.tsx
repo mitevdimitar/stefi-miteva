@@ -7,6 +7,7 @@ import Contacts from '../pages/Contacts';
 import About from '../pages/About';
 import Story from '../pages/Story';
 import Stories from '../pages/Stories';
+import Error from '../pages/Error';
 
 export default function Navigation() {
   return (
@@ -20,6 +21,7 @@ export default function Navigation() {
         <Route path="/stories" element={<Stories />} />
         <Route path="/stories/:slug" element={<Story />} />
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   );
