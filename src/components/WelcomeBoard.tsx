@@ -1,5 +1,6 @@
 import { Button, Grid, Typography, useTheme } from '@mui/material';
 import { useMobile } from '../hooks/useMobile';
+import { Link } from 'react-router-dom';
 
 export default function WelcomeBoard() {
   const isMobile = useMobile();
@@ -30,38 +31,42 @@ export default function WelcomeBoard() {
           Авторски детски приказки
         </Typography>
         <Grid container item alignItems="center" justifyContent="center" mt={3}>
-          <Button
-            variant="contained"
-            sx={{
-              textTransform: 'none',
-              fontSize: '1rem',
-              padding: '10px 30px',
-              marginRight: isMobile ? 0 : 5,
-              marginBottom: isMobile ? 1 : 0,
-              fontWeight: '600',
-              border: `2px solid ${theme?.palette.primary.main}`,
-              borderRadius: 20,
-            }}
-          >
-            За Oсмото кралство
-          </Button>
-          <Button
-            variant="outlined"
-            sx={{
-              color: 'white',
-              border: '2px solid white',
-              borderRadius: '20px',
-              textTransform: 'none',
-              fontSize: '1rem',
-              padding: '10px 30px',
-              '&: hover': {
-                border: '2px solid rgba(255,255,255,.7)',
-              },
-              fontWeight: '600',
-            }}
-          >
-            За Стефи
-          </Button>
+          <Link to="books">
+            <Button
+              variant="contained"
+              sx={{
+                textTransform: 'none',
+                fontSize: '1rem',
+                padding: '10px 30px',
+                marginRight: isMobile ? 0 : 5,
+                marginBottom: isMobile ? 1 : 0,
+                fontWeight: '600',
+                border: `2px solid ${theme?.palette.primary.main}`,
+                borderRadius: 20,
+              }}
+            >
+              За Oсмото кралство
+            </Button>
+          </Link>
+          <Link to="about">
+            <Button
+              variant="outlined"
+              sx={{
+                color: 'white',
+                border: '2px solid white',
+                borderRadius: '20px',
+                textTransform: 'none',
+                fontSize: '1rem',
+                padding: '10px 30px',
+                '&: hover': {
+                  border: '2px solid rgba(255,255,255,.7)',
+                },
+                fontWeight: '600',
+              }}
+            >
+              За Стефи
+            </Button>
+          </Link>
         </Grid>
       </Grid>
     </Grid>

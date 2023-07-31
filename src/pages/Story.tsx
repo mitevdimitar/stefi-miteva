@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import Layout from '../components/Layout';
-import { Avatar, Box, Chip, Grid, Typography, useTheme } from '@mui/material';
+import { Avatar, Box, Grid, Typography, useTheme } from '@mui/material';
 import { StoriesStore } from '../providers/Stories';
 import { useParams } from 'react-router-dom';
 import StoryChip from '../components/stories/StoryChip';
@@ -16,6 +16,10 @@ function Story() {
   const dateCreated = convertDateToDotFormat(
     currentStory ? currentStory.date_created : ''
   );
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (!currentStory && params.slug) {
@@ -40,8 +44,8 @@ function Story() {
             <Grid
               item
               xs={12}
-              md={6}
-              lg={5}
+              md={currentStory?.imageUrl ? 6 : 12}
+              lg={currentStory?.imageUrl ? 5 : 12}
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -90,19 +94,20 @@ function Story() {
                 {dateCreated}
               </Typography>
             </Grid>
-            <Grid item xs={12} md={6} lg={7}>
-              {currentStory?.imageUrl && (
+            {currentStory?.imageUrl && (
+              <Grid item xs={12} md={6} lg={7}>
                 <img
                   src={currentStory.imageUrl}
                   alt="Story preview"
                   style={{ width: '-webkit-fill-available', borderRadius: 10 }}
                 />
-              )}
-            </Grid>
+              </Grid>
+            )}
           </Grid>
-          <Grid container mt={5}>
+          {/* Handle category mapping */}
+          {/* <Grid container mt={5}>
             <Chip variant="outlined" label="Мистериозен разказ" />
-          </Grid>
+          </Grid> */}
           <Grid container mt={2}>
             <Typography align="justify">
               {parse(currentStory.content)}

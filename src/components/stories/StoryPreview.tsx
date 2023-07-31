@@ -1,12 +1,12 @@
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
+//import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Story } from '../../utils/types';
 import { useTheme } from '@mui/material';
 import parse from 'html-react-parser';
-import { convertDateToDotFormat } from '../../utils/date';
+//import { convertDateToDotFormat } from '../../utils/date';
 import storyPreview from '../../img/StoryPreview.jpg';
 import StoryChip from './StoryChip';
 import { useContext } from 'react';
@@ -22,7 +22,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
   const { setCurrentStory } = useContext(StoriesStore);
   const navigate = useNavigate();
 
-  const dateCreated = convertDateToDotFormat(story.date_created);
+  //const dateCreated = convertDateToDotFormat(story.date_created);
 
   const onStoryClick = () => {
     setCurrentStory(story);
