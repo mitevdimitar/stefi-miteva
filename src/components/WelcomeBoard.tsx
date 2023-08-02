@@ -30,7 +30,14 @@ export default function WelcomeBoard() {
         <Typography variant="h5" color="white" align="center">
           Авторски детски приказки
         </Typography>
-        <Grid container item alignItems="center" justifyContent="center" mt={3}>
+        <Grid
+          container
+          item
+          flexDirection={isMobile ? 'column' : 'row'}
+          alignItems="center"
+          justifyContent="center"
+          mt={3}
+        >
           <StyledLink to="books">
             <Button
               variant="contained"
