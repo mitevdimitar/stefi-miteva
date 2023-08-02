@@ -12,7 +12,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import StyledLink from './StyledLink';
 
 interface MenuProps {
   window?: () => Window;
@@ -43,14 +43,16 @@ export default function Menu(props: MenuProps) {
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText
-                sx={{
-                  '& span': { color: 'white', fontSize: '1.3rem' },
-                }}
-                primary={item.name}
-              />
-            </ListItemButton>
+            <StyledLink to={item.link}>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText
+                  sx={{
+                    '& span': { color: 'white', fontSize: '1.3rem' },
+                  }}
+                  primary={item.name}
+                />
+              </ListItemButton>
+            </StyledLink>
           </ListItem>
         ))}
       </List>
@@ -93,17 +95,7 @@ export default function Menu(props: MenuProps) {
             }}
           >
             {navItems.map((item) => (
-              <Link
-                /* style={{
-                  //borderBottom: `2px solid black`,
-                  paddingBottom: 10,
-                  '&:hover': {
-                    borderBottom: '2px solid #fff',
-                  },
-                }} */
-                key={item.name}
-                to={item.link}
-              >
+              <StyledLink key={item.name} to={item.link}>
                 <Button
                   variant="text"
                   sx={{
@@ -120,7 +112,7 @@ export default function Menu(props: MenuProps) {
                 >
                   {item.name}
                 </Button>
-              </Link>
+              </StyledLink>
             ))}
           </Box>
         </Toolbar>

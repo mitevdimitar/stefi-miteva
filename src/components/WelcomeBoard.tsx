@@ -1,6 +1,6 @@
 import { Button, Grid, Typography, useTheme } from '@mui/material';
 import { useMobile } from '../hooks/useMobile';
-import { Link } from 'react-router-dom';
+import StyledLink from './StyledLink';
 
 export default function WelcomeBoard() {
   const isMobile = useMobile();
@@ -31,7 +31,7 @@ export default function WelcomeBoard() {
           Авторски детски приказки
         </Typography>
         <Grid container item alignItems="center" justifyContent="center" mt={3}>
-          <Link to="books">
+          <StyledLink to="books">
             <Button
               variant="contained"
               sx={{
@@ -47,8 +47,8 @@ export default function WelcomeBoard() {
             >
               За Oсмото кралство
             </Button>
-          </Link>
-          <Link to="about">
+          </StyledLink>
+          <StyledLink to="about">
             <Button
               variant="outlined"
               sx={{
@@ -66,7 +66,7 @@ export default function WelcomeBoard() {
             >
               За Стефи
             </Button>
-          </Link>
+          </StyledLink>
         </Grid>
       </Grid>
     </Grid>
