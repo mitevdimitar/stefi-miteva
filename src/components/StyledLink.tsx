@@ -1,7 +1,7 @@
 import { styled } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const StyledLink = styled(Link)(() => ({
+const StyledLink = styled(NavLink)(() => ({
   textDecoration: 'none',
 }));
 

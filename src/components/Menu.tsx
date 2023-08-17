@@ -13,6 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import StyledLink from './StyledLink';
+import { useLocation } from 'react-router-dom';
 
 interface MenuProps {
   window?: () => Window;
@@ -32,6 +33,7 @@ const navItems = [
 export default function Menu(props: MenuProps) {
   const { window, isHome } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { pathname } = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -103,7 +105,10 @@ export default function Menu(props: MenuProps) {
                     fontWeight: '600',
                     fontSize: '1rem',
                     textTransform: 'none',
-                    borderBottom: '2px solid transparent',
+                    borderBottom:
+                      item.link === pathname
+                        ? '2px solid #fff'
+                        : '2px solid transparent',
                     borderRadius: 0,
                     '&:hover': {
                       borderBottom: '2px solid #fff',

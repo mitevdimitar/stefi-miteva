@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Story } from '../../utils/types';
-import { useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import parse from 'html-react-parser';
 //import { convertDateToDotFormat } from '../../utils/date';
 import storyPreview from '../../img/StoryPreview.jpg';
@@ -82,7 +82,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
             overflow: 'hidden',
           }}
         >
-          {parse(story.excerpt)}
+          <Box>{parse(story.excerpt)}</Box>
         </Typography>
       </CardContent>
       {/* <CardActions
