@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Story } from '../../utils/types';
-import { Box, useTheme } from '@mui/material';
+import { Box, styled, useTheme } from '@mui/material';
 import parse from 'html-react-parser';
 //import { convertDateToDotFormat } from '../../utils/date';
 import storyPreview from '../../img/StoryPreview.jpg';
@@ -16,6 +16,14 @@ import { useNavigate } from 'react-router-dom';
 interface StoryPreviewProps {
   story: Story;
 }
+
+const ExcerptContainer = styled(Box)({
+  fontSize: '0.875rem',
+  lineHeight: '1.43',
+  color: '#8b8b8b',
+  textAlign: 'justify',
+  overflow: 'hidden',
+});
 
 export default function StoryPreview({ story }: StoryPreviewProps) {
   const theme = useTheme();
@@ -75,15 +83,7 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
         >
           {story.title}
         </Typography>
-        <Typography
-          variant="body2"
-          align="justify"
-          sx={{
-            overflow: 'hidden',
-          }}
-        >
-          <Box>{parse(story.excerpt)}</Box>
-        </Typography>
+        <ExcerptContainer>{parse(story.excerpt)}</ExcerptContainer>
       </CardContent>
       {/* <CardActions
         sx={{
