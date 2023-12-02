@@ -49,7 +49,7 @@ const feedbacks = [
     Тя имала две мишлета, но в къщата влязла котка. Вместо да я изгони, Баба Яга я приютила. 
     И оттогава Стефания не спира да пише. 
     Пише за приключенията на безстрашни деца и смели животни, на които се случват фантастични и интересни неща.`,
-    link: 'https://www.btv.bg/shows/predi-obed/videos/9-godishnata-pisatelka-stefanija',
+    link: 'https://www.btv.bg/shows/predi-obed/videos/9-godishnata-pisatelka-stefanija.html#',
     previewImg: Feedback4,
   },
   {
