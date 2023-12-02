@@ -13,12 +13,16 @@ export const getFirebaseStories = async (lastVisible: any) => {
   const newQuery = lastVisible
     ? query(
         collection(db, 'stories'),
+        where('status', '!=', 'hide'),
+        orderBy('status', 'desc'),
         orderBy('date_created', 'desc'),
         startAfter(lastVisible),
         limit(9)
       )
     : query(
         collection(db, 'stories'),
+        where('status', '!=', 'hide'),
+        orderBy('status', 'desc'),
         orderBy('date_created', 'desc'),
         limit(10)
       );

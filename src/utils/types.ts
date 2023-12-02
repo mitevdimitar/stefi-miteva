@@ -1,3 +1,5 @@
+type StoryStatus = 'publish' | 'hide';
+
 export interface Story {
   author: string;
   categorties: number[];
@@ -8,7 +10,7 @@ export interface Story {
   imageUrl: string;
   link: string;
   slug: string;
-  status: string;
+  status: StoryStatus;
   tags: string[];
   title: string;
 }
