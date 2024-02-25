@@ -91,6 +91,8 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
     const matchedStory = await getStoryBySlug(slug);
     if (matchedStory) {
       setCurrentStory(matchedStory);
+    } else {
+      window.location.replace('/stories');
     }
   }, []);
 

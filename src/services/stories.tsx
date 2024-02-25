@@ -8,12 +8,13 @@ import {
   where,
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
+import { Story } from '../utils/types';
 
 export const getFirebaseStories = async (lastVisible: any) => {
   const newQuery = lastVisible
     ? query(
         collection(db, 'stories'),
-        where('status', '!=', 'hide'),
+        where('status', '==', 'publish'),
         orderBy('status', 'desc'),
         orderBy('date_created', 'desc'),
         startAfter(lastVisible),
@@ -21,7 +22,7 @@ export const getFirebaseStories = async (lastVisible: any) => {
       )
     : query(
         collection(db, 'stories'),
-        where('status', '!=', 'hide'),
+        where('status', '==', 'publish'),
         orderBy('status', 'desc'),
         orderBy('date_created', 'desc'),
         limit(10)
@@ -32,7 +33,11 @@ export const getFirebaseStories = async (lastVisible: any) => {
 };
 
 export const getStoryBySlug = async (slug: string) => {
-  const q = query(collection(db, 'stories'), where('slug', '==', slug));
+  const q = query(
+    collection(db, 'stories'),
+    where('status', '==', 'publish'),
+    where('slug', '==', slug)
+  );
 
   const querySnapshot = await getDocs(q);
   let matchedStory: any = null;
