@@ -5,6 +5,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import GMobiledataIcon from '@mui/icons-material/GMobiledata';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import { useMobile } from '../hooks/useMobile';
+import { getYear } from '../utils/date';
 
 const StyledIconButton = styled(IconButton)(() => ({
   color: 'white',
@@ -33,7 +34,7 @@ function Footer() {
         justifyContent={isMobile ? 'center' : 'flex-start'}
         mb={isMobile ? 1 : 0}
       >
-        © 2023 Приказките на Стефи
+        {`© ${getYear()} Приказките на Стефи`}
       </Grid>
       {!isMobile && (
         <Grid
