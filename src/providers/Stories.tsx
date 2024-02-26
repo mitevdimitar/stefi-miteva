@@ -87,12 +87,19 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
     });
   };
 
+  const setError = (error: string) => {
+    dispatch({
+      type: StoriesActionKind.SET_ERROR,
+      payload: error,
+    });
+  };
+
   const getCurrentStory = useCallback(async (slug: string) => {
     const matchedStory = await getStoryBySlug(slug);
     if (matchedStory) {
       setCurrentStory(matchedStory);
     } else {
-      window.location.replace('/stories');
+      setError('Изглежда няма такава приказка!');
     }
   }, []);
 

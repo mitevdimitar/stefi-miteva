@@ -7,10 +7,11 @@ import StoryChip from '../components/stories/StoryChip';
 import { convertDateToDotFormat } from '../utils/date';
 import parse from 'html-react-parser';
 import Loader from '../components/Loader';
+import NotFund from '../img/not_found.png';
 
 function Story() {
   const { state, getCurrentStory } = useContext(StoriesStore);
-  const { currentStory } = state;
+  const { currentStory, error } = state;
   const params = useParams();
   const theme = useTheme();
   const dateCreated = convertDateToDotFormat(
@@ -26,6 +27,24 @@ function Story() {
       getCurrentStory(params.slug);
     }
   }, [currentStory, getCurrentStory, params]);
+
+  if (error) {
+    return (
+      <Layout isHome={false}>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          direction="column"
+        >
+          <Typography variant="h5" color="#8b8b8b">
+            {error}
+          </Typography>
+          <img src={NotFund} alt="media logo" />
+        </Grid>
+      </Layout>
+    );
+  }
 
   return (
     <Layout isHome={false}>

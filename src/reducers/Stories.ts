@@ -8,6 +8,7 @@ export enum StoriesActionKind {
   SET_LAST_VISIBLE = 'SET_LAST_VISIBLE',
   SET_FULLY_FETCHED = 'SET_FULLY_FETCHED',
   SET_CURRENT_STORY = 'SET_CURRENT_STORY',
+  SET_ERROR = 'SET_ERROR',
 }
 
 // An interface for our actions
@@ -70,6 +71,11 @@ export function storiesReducer(state: StoriesState, action: StoriesAction) {
       return {
         ...state,
         fullyFetched: action.payload,
+      };
+    case StoriesActionKind.SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;
