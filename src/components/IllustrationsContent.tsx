@@ -15,7 +15,6 @@ function IllustrationsContent() {
   const { illustrations, loading } = state;
 
   useEffect(() => {
-    console.log({ illustrations });
     if (!illustrations) {
       getIllustrations();
     }
