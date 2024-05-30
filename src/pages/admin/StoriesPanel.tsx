@@ -2,12 +2,13 @@ import { Stack } from '@mui/material';
 import Layout from '../../components/Layout';
 import { useContext } from 'react';
 import { StoriesStore } from '../../providers/Stories';
-import StoryRow from './StoryRow';
+import StoryRow from '../../components/admin/StoryRow';
 
 function StoriesPanel() {
   const {
     state: { stories },
   } = useContext(StoriesStore);
+  console.log({ stories });
 
   return (
     <Layout isHome={false}>
