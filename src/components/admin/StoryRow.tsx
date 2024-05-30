@@ -2,6 +2,7 @@ import { Grid, useTheme, IconButton, Box } from '@mui/material';
 import { Story } from '../../utils/types';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import { useNavigate } from 'react-router-dom';
 
 type StoryRowProps = {
   story: Story;
@@ -9,6 +10,12 @@ type StoryRowProps = {
 
 function StoryRow({ story }: StoryRowProps) {
   const theme = useTheme();
+  const navigate = useNavigate();
+
+  const onEditClick = () => {
+    navigate(`/stories-panel/edit/${story.slug}`);
+  };
+
   return (
     <Grid
       container
@@ -21,7 +28,7 @@ function StoryRow({ story }: StoryRowProps) {
       {story.title}
       <Box display={'flex'} gap={theme.spacing(1)}>
         <IconButton>
-          <ModeEditOutlineOutlinedIcon />
+          <ModeEditOutlineOutlinedIcon onClick={onEditClick} />
         </IconButton>
         <IconButton>
           <DeleteOutlineOutlinedIcon />
