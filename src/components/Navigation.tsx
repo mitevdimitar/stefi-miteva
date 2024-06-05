@@ -8,7 +8,7 @@ import About from '../pages/About';
 import Story from '../pages/Story';
 import Stories from '../pages/Stories';
 import Error from '../pages/Error';
-import StoriesPanel from '../pages/admin/StoriesPanel';
+import StoriesPanel from './admin/StoriesPanel';
 import EditStory from '../pages/admin/EditStory';
 
 export default function Navigation() {

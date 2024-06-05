@@ -2,10 +2,12 @@ import { Button, FormControl, Stack, TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import StoryEditor from '../../components/admin/TextEditor';
 
 const storySchema = yup
   .object({
     title: yup.string().required('Трябва да посочиш заглавие на приказката!'),
+    text: yup.string().required('Приказката трябва да има съдържание!'),
   })
   .required();
 
@@ -51,6 +53,13 @@ function StoryForm() {
                 error={!!errors.title}
                 helperText={errors.title?.message}
               />
+            )}
+          />
+          <Controller
+            control={control}
+            name="text"
+            render={({ field: { onChange, value } }) => (
+              <StoryEditor value={value} onTextChange={onChange} />
             )}
           />
           <Button
