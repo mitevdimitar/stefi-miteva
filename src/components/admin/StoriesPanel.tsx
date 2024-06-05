@@ -1,8 +1,8 @@
 import { Stack } from '@mui/material';
-import Layout from '../../components/Layout';
+import Layout from '../Layout';
 import { useContext } from 'react';
 import { StoriesStore } from '../../providers/Stories';
-import StoryRow from '../../components/admin/StoryRow';
+import StoryRow from './StoryRow';
 
 function StoriesPanel() {
   const {
