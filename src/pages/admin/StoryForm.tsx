@@ -3,6 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import StoryEditor from '../../components/admin/TextEditor';
+import { createStory } from '../../services/stories';
 
 const storySchema = yup
   .object({
@@ -23,8 +24,14 @@ function StoryForm() {
     },
   });
   const onSubmit = async (data: any) => {
+    const { text, title } = data;
     try {
-      console.log({ data });
+      const story = {
+        text,
+        title,
+      };
+      const created = await createStory(story);
+      console.log({ created });
     } catch (error) {
       console.log(error);
     }
