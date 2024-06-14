@@ -10,6 +10,7 @@ import Stories from '../pages/Stories';
 import Error from '../pages/Error';
 import StoriesPanel from './admin/StoriesPanel';
 import EditStory from '../pages/admin/EditStory';
+import CreateStory from '../pages/admin/CreateStory';
 
 export default function Navigation() {
   return (
@@ -23,6 +24,7 @@ export default function Navigation() {
         <Route path="/stories" element={<Stories />} />
         <Route path="/stories/:slug" element={<Story />} />
         <Route path="/stories-panel" element={<StoriesPanel />} />
+        <Route path="/stories-panel/create" element={<CreateStory />} />
         <Route path="/stories-panel/edit/:slug" element={<EditStory />} />
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Error />} />
