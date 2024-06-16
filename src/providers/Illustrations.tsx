@@ -4,7 +4,7 @@ import {
   IllustrationsState,
   illustrationsReducer,
   initalIllustrationsState,
-} from '../reducers/Illustrations';
+} from '../reducers/illustrations';
 import { getStorageIllustrations } from '../services/illustrations';
 
 interface IllustrationsContext {
