@@ -12,7 +12,7 @@ import parse from 'html-react-parser';
 import { convertDateToDotFormat } from '../../utils/date';
 import StoryChip from './StoryChip';
 import { useContext } from 'react';
-import { StoriesStore } from '../../providers/Stories';
+import { StoriesStore } from '../../providers/stories';
 import { useNavigate } from 'react-router-dom';
 import { useMobile } from '../../hooks/useMobile';
 

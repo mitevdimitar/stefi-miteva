@@ -1,21 +1,27 @@
 import { Stack } from '@mui/material';
 import Layout from '../Layout';
 import { useContext } from 'react';
-import { StoriesStore } from '../../providers/Stories';
+import { StoriesStore } from '../../providers/stories';
 import StoryRow from './StoryRow';
+import { useAuth } from '../../providers/auth';
 
 function StoriesPanel() {
   const {
     state: { stories },
   } = useContext(StoriesStore);
-  console.log({ stories });
+  const { isLogged } = useAuth();
+  console.log({ isLogged });
 
   return (
     <Layout isHome={false}>
       <Stack gap={1} alignItems={'start'} width={'100%'}>
-        {stories?.map((story, ind) => {
-          return <StoryRow key={ind} story={story} />;
-        })}
+        {isLogged ? (
+          <div>Not logged in</div>
+        ) : (
+          stories?.map((story, ind) => {
+            return <StoryRow key={ind} story={story} />;
+          })
+        )}
       </Stack>
     </Layout>
   );
