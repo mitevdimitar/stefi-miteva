@@ -119,7 +119,11 @@ function Story() {
                   width="100%"
                   src={currentStory.imageUrl}
                   alt="Story preview"
-                  style={{ width: '-webkit-fill-available', borderRadius: 10 }}
+                  style={{
+                    width: '-webkit-fill-available',
+                    borderRadius: 10,
+                    maxWidth: '100%',
+                  }}
                 />
               </Grid>
             )}

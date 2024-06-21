@@ -74,6 +74,10 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
         sx={{
           display: 'flex',
           flexDirection: 'column',
+          width: '40%',
+          [theme.breakpoints.up('md')]: {
+            width: '50%',
+          },
         }}
       >
         <CardContent
