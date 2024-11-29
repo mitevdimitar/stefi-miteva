@@ -8,7 +8,7 @@ import Reviews from '../components/books/Reviews';
 
 function Books() {
   return (
-    <Layout isHome={false}>
+    <Layout>
       <Grid container>
         <BookPreview />
         <TitledDivider title="АНОТАЦИЯ" />

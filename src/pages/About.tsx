@@ -83,7 +83,7 @@ function About() {
   };
 
   return (
-    <Layout isHome={false}>
+    <Layout>
       <Grid
         container
         direction="column"

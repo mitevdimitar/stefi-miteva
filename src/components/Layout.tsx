@@ -7,11 +7,11 @@ import { useMobile } from '../hooks/useMobile';
 
 interface LayoutProps {
   children: JSX.Element;
-  isHome: boolean;
+  isHome?: boolean;
   isContacts?: boolean;
 }
 
-function Layout({ children, isHome, isContacts }: LayoutProps) {
+function Layout({ children, isHome = false, isContacts }: LayoutProps) {
   const theme = useTheme();
   const isMobile = useMobile();
 

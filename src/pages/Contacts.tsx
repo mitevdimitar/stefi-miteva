@@ -8,7 +8,7 @@ function Contacts() {
   const isMobile = useMobile();
 
   return (
-    <Layout isHome={false} isContacts={true}>
+    <Layout isContacts={true}>
       <Grid
         container
         sx={{

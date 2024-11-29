@@ -3,7 +3,7 @@ import StoryForm from './StoryForm';
 
 function EditStory() {
   return (
-    <Layout isHome={false}>
+    <Layout>
       <StoryForm />
     </Layout>
   );
