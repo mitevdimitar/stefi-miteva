@@ -30,7 +30,7 @@ function Story() {
 
   if (error) {
     return (
-      <Layout isHome={false}>
+      <Layout>
         <Grid
           container
           alignItems="center"
@@ -47,7 +47,7 @@ function Story() {
   }
 
   return (
-    <Layout isHome={false}>
+    <Layout>
       {currentStory ? (
         <Grid
           container

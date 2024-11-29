@@ -13,7 +13,7 @@ function StoriesPanel() {
   console.log({ isLogged });
 
   return (
-    <Layout isHome={false}>
+    <Layout>
       <Stack gap={1} alignItems={'start'} width={'100%'}>
         {isLogged ? (
           <div>Not logged in</div>

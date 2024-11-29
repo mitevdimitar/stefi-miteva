@@ -14,7 +14,7 @@ function StoriesContent() {
   const remainingPageStories = stories ? stories.slice(1) : [];
 
   return (
-    <Layout isHome={false}>
+    <Layout>
       {loading && !stories ? (
         <Loader />
       ) : (

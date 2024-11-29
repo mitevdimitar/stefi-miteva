@@ -77,7 +77,7 @@ const reversedFeedbacks = feedbacks.reverse();
 
 function Feedbacks() {
   return (
-    <Layout isHome={false}>
+    <Layout>
       <Grid>
         {reversedFeedbacks.map((feedback, i) => {
           return <Feedback key={i} feedback={feedback} />;

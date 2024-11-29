@@ -31,7 +31,7 @@ function IllustrationsContent() {
   };
 
   return (
-    <Layout isHome={false}>
+    <Layout>
       {illustrations && !loading ? (
         <Box>
           <ImageList variant="masonry" cols={getCols()} gap={8}>

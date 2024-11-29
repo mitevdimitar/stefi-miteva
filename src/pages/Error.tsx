@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 
 function Error() {
   return (
-    <Layout isHome={false}>
+    <Layout>
       <Stack alignItems="center" justifyContent="center">
         <Typography variant="h3">
           Хмм 🤔, изглежда няма такава страница!
