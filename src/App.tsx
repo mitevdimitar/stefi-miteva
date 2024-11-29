@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@mui/material';
-import Navigation from './components/Navigation';
+import AppRouter from './components/Router';
 import { theme } from './services/theme';
 import { StoriesProvider } from './providers/stories';
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <StoriesProvider>
-        <Navigation />
+        <AppRouter />
       </StoriesProvider>
     </ThemeProvider>
   );
