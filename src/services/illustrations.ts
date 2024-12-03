@@ -1,6 +1,6 @@
 import { getDownloadURL, listAll, ref } from 'firebase/storage';
 import { storage } from './firebase';
-import { Illustration } from '../utils/types';
+import { Illustration } from '../types';
 
 export const getStorageIllustrations = async () => {
   const listRef = ref(storage, 'illustrations');

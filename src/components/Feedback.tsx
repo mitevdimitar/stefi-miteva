@@ -7,7 +7,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { FeedbackType } from '../utils/types';
+import { FeedbackType } from '../types';
 import { useMobile } from '../hooks/useMobile';
 
 interface FeedbackProps {

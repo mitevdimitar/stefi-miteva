@@ -3,7 +3,7 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { BookReview } from '../../utils/types';
+import { BookReview } from '../../types';
 import { Avatar, Grid, Stack } from '@mui/material';
 
 interface ReviewCardProps {

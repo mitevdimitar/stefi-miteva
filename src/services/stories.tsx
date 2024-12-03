@@ -9,7 +9,6 @@ import {
   addDoc,
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
-import { Story } from '../utils/types';
 
 export const getFirebaseStories = async (lastVisible: any) => {
   const newQuery = lastVisible

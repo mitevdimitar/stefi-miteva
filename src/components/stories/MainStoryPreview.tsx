@@ -7,7 +7,7 @@ import {
   CardActions,
   useTheme,
 } from '@mui/material';
-import { Story } from '../../utils/types';
+import { Story } from '../../types';
 import parse from 'html-react-parser';
 import { convertDateToDotFormat } from '../../utils/date';
 import StoryChip from './StoryChip';

@@ -1,4 +1,4 @@
-import { Story } from '../utils/types';
+import { Story } from '../types';
 
 export enum StoriesActionKind {
   INITIATE_FETCHING = 'INITIATE_FETCHING',

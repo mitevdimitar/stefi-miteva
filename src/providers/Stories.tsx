@@ -5,7 +5,7 @@ import {
   initalStoryState,
   storiesReducer,
 } from '../reducers/stories';
-import { Story } from '../utils/types';
+import { Story } from '../types';
 import { QuerySnapshot } from 'firebase/firestore';
 import { getFirebaseStories, getStoryBySlug } from '../services/stories';
 
