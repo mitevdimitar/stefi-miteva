@@ -1,5 +1,5 @@
 import { Grid, useTheme, IconButton, Box } from '@mui/material';
-import { Story } from '../../utils/types';
+import { Story } from '../../types';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { useNavigate } from 'react-router-dom';
