@@ -1,19 +1,28 @@
 import { Stack, Box, TextField, Button } from '@mui/material';
 import Layout from '../components/Layout';
 import { loginFirebase } from '../services/auth';
+import { useAuth } from '../providers/auth';
+import Loader from '../components/Loader';
+import { Navigate } from 'react-router-dom';
 
 function Login() {
+  const { isLogged, authChecked } = useAuth();
+
   const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get('email') as string;
     const password = data.get('password') as string;
-    console.log({
-      email,
-      password,
-    });
     await loginFirebase(email, password);
   };
+
+  if (!authChecked) {
+    return <Loader />;
+  }
+
+  if (isLogged) {
+    return <Navigate to="/stories-panel" />;
+  }
 
   return (
     <Layout>
