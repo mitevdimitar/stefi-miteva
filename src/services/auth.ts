@@ -1,6 +1,8 @@
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
+  User,
 } from 'firebase/auth';
 import { auth } from './firebase';
 
@@ -9,9 +11,7 @@ export const createAccountFirebase = async (
   password: string
 ) => {
   try {
-    const result = await createUserWithEmailAndPassword(auth, email, password);
-
-    console.log({ result });
+    await createUserWithEmailAndPassword(auth, email, password);
   } catch (error) {
     console.error('Error registering user: ', error);
   }
@@ -19,10 +19,14 @@ export const createAccountFirebase = async (
 
 export const loginFirebase = async (email: string, password: string) => {
   try {
-    const result = await signInWithEmailAndPassword(auth, email, password);
-
-    console.log({ result });
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     console.error('Error logging user: ', error);
   }
+};
+
+type AuthStateChangeCallback = (user: User | null) => void;
+
+export const observeAuthState = (callback: AuthStateChangeCallback) => {
+  return onAuthStateChanged(auth, callback);
 };
