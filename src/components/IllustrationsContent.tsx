@@ -4,7 +4,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import Layout from '../components/Layout';
 import { useContext, useEffect } from 'react';
 import { useMediaQuery, useTheme } from '@mui/material';
-import { IllustrationsStore } from '../providers/illustrations';
+import { IllustrationsStore } from '../providers/IllustrationsProvider';
 import Loader from '../components/Loader';
 
 function IllustrationsContent() {

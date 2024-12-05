@@ -3,7 +3,7 @@ import StoryPreview from './StoryPreview';
 import Layout from '../Layout';
 import { useContext } from 'react';
 import MainStoryPreview from './MainStoryPreview';
-import { StoriesStore } from '../../providers/stories';
+import { StoriesStore } from '../../providers/StoriesProvider';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Loader from '../Loader';
 

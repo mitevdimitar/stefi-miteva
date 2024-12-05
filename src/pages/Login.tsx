@@ -1,7 +1,7 @@
 import { Stack, Box, TextField, Button } from '@mui/material';
 import Layout from '../components/Layout';
 import { loginFirebase } from '../services/auth';
-import { useAuth } from '../providers/auth';
+import { useAuth } from '../providers/AuthProvider';
 import Loader from '../components/Loader';
 import { Navigate } from 'react-router-dom';
 

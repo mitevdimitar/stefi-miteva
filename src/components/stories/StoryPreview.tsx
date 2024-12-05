@@ -10,7 +10,7 @@ import parse from 'html-react-parser';
 import storyPreview from '../../img/StoryPreview.jpg';
 import StoryChip from './StoryChip';
 import { useContext } from 'react';
-import { StoriesStore } from '../../providers/stories';
+import { StoriesStore } from '../../providers/StoriesProvider';
 import { useNavigate } from 'react-router-dom';
 
 interface StoryPreviewProps {

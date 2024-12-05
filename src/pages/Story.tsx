@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { Avatar, Box, Grid, Typography, useTheme } from '@mui/material';
-import { StoriesStore } from '../providers/stories';
+import { StoriesStore } from '../providers/StoriesProvider';
 import { useParams } from 'react-router-dom';
 import StoryChip from '../components/stories/StoryChip';
 import { convertDateToDotFormat } from '../utils/date';

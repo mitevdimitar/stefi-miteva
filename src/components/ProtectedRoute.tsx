@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { FC, PropsWithChildren } from 'react';
-import { useAuth } from '../providers/auth';
+import { useAuth } from '../providers/AuthProvider';
 import Loader from './Loader';
 
 const ProtectedRoute: FC<PropsWithChildren> = ({ children }) => {
