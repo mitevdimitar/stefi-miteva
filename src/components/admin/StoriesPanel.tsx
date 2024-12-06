@@ -1,7 +1,6 @@
 import { Stack } from '@mui/material';
-import Layout from '../Layout';
 import { useContext } from 'react';
-import { StoriesStore } from '../../providers/stories';
+import { StoriesStore } from '../../providers/StoriesProvider';
 import StoryRow from './StoryRow';
 
 function StoriesPanel() {
@@ -10,13 +9,11 @@ function StoriesPanel() {
   } = useContext(StoriesStore);
 
   return (
-    <Layout>
-      <Stack gap={1} alignItems={'start'} width={'100%'}>
-        {stories?.map((story, ind) => {
-          return <StoryRow key={ind} story={story} />;
-        })}
-      </Stack>
-    </Layout>
+    <Stack gap={1} alignItems={'start'} width={'100%'}>
+      {stories?.map((story, ind) => {
+        return <StoryRow key={ind} story={story} />;
+      })}
+    </Stack>
   );
 }
 

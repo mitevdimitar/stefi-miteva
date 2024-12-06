@@ -1,4 +1,3 @@
-import Layout from '../components/Layout';
 import { Grid } from '@mui/material';
 import MoretoLogo from '../img/moreto-logo.png';
 import GeoMilevLogo from '../img/geo_milev_logo.png';
@@ -77,13 +76,11 @@ const reversedFeedbacks = feedbacks.reverse();
 
 function Feedbacks() {
   return (
-    <Layout>
-      <Grid>
-        {reversedFeedbacks.map((feedback, i) => {
-          return <Feedback key={i} feedback={feedback} />;
-        })}
-      </Grid>
-    </Layout>
+    <Grid>
+      {reversedFeedbacks.map((feedback, i) => {
+        return <Feedback key={i} feedback={feedback} />;
+      })}
+    </Grid>
   );
 }
 

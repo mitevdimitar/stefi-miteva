@@ -1,5 +1,4 @@
 import { useContext, useEffect } from 'react';
-import Layout from '../components/Layout';
 import { Avatar, Box, Grid, Typography, useTheme } from '@mui/material';
 import { StoriesStore } from '../providers/StoriesProvider';
 import { useParams } from 'react-router-dom';
@@ -30,24 +29,22 @@ function Story() {
 
   if (error) {
     return (
-      <Layout>
-        <Grid
-          container
-          alignItems="center"
-          justifyContent="center"
-          direction="column"
-        >
-          <Typography variant="h5" color="#8b8b8b">
-            {error}
-          </Typography>
-          <img src={NotFund} alt="media logo" />
-        </Grid>
-      </Layout>
+      <Grid
+        container
+        alignItems="center"
+        justifyContent="center"
+        direction="column"
+      >
+        <Typography variant="h5" color="#8b8b8b">
+          {error}
+        </Typography>
+        <img src={NotFund} alt="media logo" />
+      </Grid>
     );
   }
 
   return (
-    <Layout>
+    <>
       {currentStory ? (
         <Grid
           container
@@ -141,7 +138,7 @@ function Story() {
       ) : (
         <Loader />
       )}
-    </Layout>
+    </>
   );
 }
 

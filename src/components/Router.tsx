@@ -18,36 +18,39 @@ import EditStory from '../pages/admin/EditStory';
 import CreateStory from '../pages/admin/CreateStory';
 import Login from '../pages/Login';
 import ProtectedRoute from './ProtectedRoute';
+import Layout from './Layout';
 
 export default function AppRouter() {
   return (
     <Router>
-      <Routes>
-        <Route path="/illustrations" element={<Illustrations />} />
-        <Route path="/books" element={<Books />} />
-        <Route path="/feedback" element={<Feedback />} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/stories" element={<Outlet />}>
-          <Route index element={<Stories />} />
-          <Route path=":slug" element={<Story />} />
-        </Route>
-        <Route
-          path="/stories-panel"
-          element={
-            <ProtectedRoute>
-              <Outlet />
-            </ProtectedRoute>
-          }
-        >
-          <Route index element={<StoriesPanel />} />
-          <Route path="create" element={<CreateStory />} />
-          <Route path="edit/:slug" element={<EditStory />} />
-        </Route>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/illustrations" element={<Illustrations />} />
+          <Route path="/books" element={<Books />} />
+          <Route path="/feedback" element={<Feedback />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/stories" element={<Outlet />}>
+            <Route index element={<Stories />} />
+            <Route path=":slug" element={<Story />} />
+          </Route>
+          <Route
+            path="/stories-panel"
+            element={
+              <ProtectedRoute>
+                <Outlet />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<StoriesPanel />} />
+            <Route path="create" element={<CreateStory />} />
+            <Route path="edit/:slug" element={<EditStory />} />
+          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }

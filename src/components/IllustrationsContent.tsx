@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import Layout from '../components/Layout';
 import { useContext, useEffect } from 'react';
 import { useMediaQuery, useTheme } from '@mui/material';
 import { IllustrationsStore } from '../providers/IllustrationsProvider';
@@ -31,7 +30,7 @@ function IllustrationsContent() {
   };
 
   return (
-    <Layout>
+    <>
       {illustrations && !loading ? (
         <Box>
           <ImageList variant="masonry" cols={getCols()} gap={8}>
@@ -55,7 +54,7 @@ function IllustrationsContent() {
       ) : (
         <Loader />
       )}
-    </Layout>
+    </>
   );
 }
 
