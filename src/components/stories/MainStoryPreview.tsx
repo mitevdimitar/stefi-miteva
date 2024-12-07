@@ -14,6 +14,7 @@ import StoryChip from './StoryChip';
 import { useContext } from 'react';
 import { StoriesStore } from '../../providers/Stories';
 import { useNavigate } from 'react-router-dom';
+import { useMobile } from '../../hooks/useMobile';
 
 interface MainStoryPreviewProps {
   story: Story | null;
@@ -23,6 +24,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
   const theme = useTheme();
   const { setCurrentStory } = useContext(StoriesStore);
   const navigate = useNavigate();
+  const isMobile = useMobile();
 
   if (!story) return null;
 
@@ -74,7 +76,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          width: '40%',
+          width: isMobile ? '100%' : '40%',
           [theme.breakpoints.up('md')]: {
             width: '50%',
           },
