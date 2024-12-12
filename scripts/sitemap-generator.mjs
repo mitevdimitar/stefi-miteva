@@ -1,7 +1,7 @@
-import { getPublishedStorySlugs } from './story-service.mjs';
 import * as fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { getPublishedStorySlugs } from './story-service.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,7 +9,6 @@ const __dirname = path.dirname(__filename);
 const BASE_URL = 'https://stefimiteva.com';
 const OUTPUT_FILE = path.resolve(__dirname, '../public/sitemap.xml');
 
-// Generate the sitemap
 async function generateSitemap() {
   const staticRoutes = [
     '',
@@ -41,11 +40,9 @@ async function generateSitemap() {
     .join('')}
 </urlset>`;
 
-  // Write the sitemap to the public directory
   fs.writeFileSync(OUTPUT_FILE, sitemapContent, 'utf8');
   console.log(`Sitemap successfully generated at ${OUTPUT_FILE}`);
   process.exit(0);
 }
 
-// Run the generator
 generateSitemap();
