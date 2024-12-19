@@ -5,6 +5,9 @@ import {
   Route,
   Outlet,
 } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
+import Layout from './Layout';
+import Loader from './Loader';
 const Home = lazy(() => import('../pages/Home'));
 const Books = lazy(() => import('../pages/Books'));
 const Feedback = lazy(() => import('../pages/Feedback'));
@@ -21,9 +24,6 @@ const Login = lazy(() => import('../pages/Login'));
 const StoriesPanel = lazy(() => import('./admin/StoriesPanel'));
 const EditStory = lazy(() => import('../pages/admin/EditStory'));
 const CreateStory = lazy(() => import('../pages/admin/CreateStory'));
-import ProtectedRoute from './ProtectedRoute';
-import Layout from './Layout';
-import Loader from './Loader';
 
 export default function AppRouter() {
   return (
