@@ -1,4 +1,4 @@
-import { getDownloadURL, listAll, ref } from 'firebase/storage';
+import { getDownloadURL, listAll, ref, uploadBytes } from 'firebase/storage';
 import { storage } from './firebase';
 import { Illustration } from '../types';
 
@@ -21,4 +21,16 @@ export const getStorageIllustrations = async () => {
     console.log({ err });
   }
   return fetchedIllustrations;
+};
+
+export const uploadStoryImage = async (file: File, authorUid: string) => {
+  const storageRef = ref(storage, `story-images/${file.name}`);
+  const metadata = {
+    customMetadata: {
+      author_uid: authorUid,
+    },
+  };
+  await uploadBytes(storageRef, file, metadata);
+  const downloadURL = await getDownloadURL(storageRef);
+  return downloadURL;
 };

@@ -1,4 +1,4 @@
-import StoryForm from './StoryForm';
+import StoryForm from '../../components/admin/StoryForm';
 
 function EditStory() {
   return <StoryForm />;
