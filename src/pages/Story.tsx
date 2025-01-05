@@ -1,15 +1,15 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Avatar, Box, Grid, Typography, useTheme } from '@mui/material';
-import { StoriesStore } from '../providers/StoriesProvider';
 import { useParams } from 'react-router-dom';
+import parse from 'html-react-parser';
+import { useStories } from '../providers/StoriesProvider';
 import StoryChip from '../components/stories/StoryChip';
 import { convertDateToDotFormat } from '../utils/date';
-import parse from 'html-react-parser';
 import Loader from '../components/Loader';
 import NotFund from '../img/not_found.png';
 
 function Story() {
-  const { state, getCurrentStory } = useContext(StoriesStore);
+  const { state, getCurrentStory } = useStories();
   const { currentStory, error } = state;
   const params = useParams();
   const theme = useTheme();

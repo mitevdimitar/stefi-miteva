@@ -1,12 +1,11 @@
 import { Stack } from '@mui/material';
-import { useContext } from 'react';
-import { StoriesStore } from '../../providers/StoriesProvider';
+import { useStories } from '../../providers/StoriesProvider';
 import StoryRow from './StoryRow';
 
 function StoriesPanel() {
   const {
     state: { stories },
-  } = useContext(StoriesStore);
+  } = useStories();
 
   return (
     <Stack gap={1} alignItems={'start'} width={'100%'}>

@@ -1,4 +1,10 @@
-import { createContext, useCallback, useEffect, useReducer } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+} from 'react';
 import {
   StoriesActionKind,
   StoriesState,
@@ -30,6 +36,14 @@ export const StoriesStore = createContext<StoriesContext>({
 });
 
 const { Provider } = StoriesStore;
+
+export const useStories = () => {
+  const context = useContext(StoriesStore);
+  if (!context) {
+    throw new Error('useStories must be used within a StoriesProvider');
+  }
+  return context;
+};
 
 export function StoriesProvider({ children }: StoriesProviderProps) {
   const [state, dispatch] = useReducer(storiesReducer, initalStoryState);

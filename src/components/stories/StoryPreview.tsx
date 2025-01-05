@@ -3,15 +3,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
+import parse from 'html-react-parser';
 import { Story } from '../../types';
 import { Box, styled, useTheme } from '@mui/material';
-import parse from 'html-react-parser';
 //import { convertDateToDotFormat } from '../../utils/date';
 import storyPreview from '../../img/StoryPreview.jpg';
 import StoryChip from './StoryChip';
-import { useContext } from 'react';
-import { StoriesStore } from '../../providers/StoriesProvider';
-import { useNavigate } from 'react-router-dom';
+import { useStories } from '../../providers/StoriesProvider';
 
 interface StoryPreviewProps {
   story: Story;
@@ -27,7 +26,7 @@ const ExcerptContainer = styled(Box)({
 
 export default function StoryPreview({ story }: StoryPreviewProps) {
   const theme = useTheme();
-  const { setCurrentStory } = useContext(StoriesStore);
+  const { setCurrentStory } = useStories();
   const navigate = useNavigate();
 
   //const dateCreated = convertDateToDotFormat(story.date_created);

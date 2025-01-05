@@ -1,6 +1,6 @@
 type StoryStatus = 'publish' | 'hide';
 
-export interface Story {
+export type Story = {
   author: string;
   categorties: number[];
   content: string;
@@ -13,25 +13,25 @@ export interface Story {
   status: StoryStatus;
   tags: string[];
   title: string;
-}
+};
 
-export interface Illustration {
+export type Illustration = {
   img: string;
   title: string;
-}
+};
 
-export interface BookReview {
+export type BookReview = {
   title: string;
   subTitle?: string;
   link: string | null;
   img: string;
   description: string;
-}
+};
 
-export interface FeedbackType {
+export type FeedbackType = {
   mediaLogo: string;
   title: string;
   content: string;
   link: string;
   previewImg: string;
-}
+};

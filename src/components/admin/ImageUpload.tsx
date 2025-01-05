@@ -23,7 +23,7 @@ const ImageUpload: FC<ImageUploadProps> = ({ onUpload }) => {
       const downloadURL = await uploadStoryImage(file, user?.uid || '');
       console.log('File uploaded:', downloadURL);
       setUploading(false);
-      if (onUpload) onUpload(downloadURL); // Callback to pass the URL to parent
+      if (onUpload) onUpload(downloadURL);
     } catch (err) {
       console.error('Error uploading file:', err);
       setError('Failed to upload image. Please try again.');

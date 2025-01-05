@@ -1,8 +1,9 @@
 import { Grid, useTheme, IconButton, Box } from '@mui/material';
-import { Story } from '../../types';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { useNavigate } from 'react-router-dom';
+import { Story } from '../../types';
+import { useStories } from '../../providers/StoriesProvider';
 
 type StoryRowProps = {
   story: Story;
@@ -11,8 +12,10 @@ type StoryRowProps = {
 function StoryRow({ story }: StoryRowProps) {
   const theme = useTheme();
   const navigate = useNavigate();
+  const { setCurrentStory } = useStories();
 
   const onEditClick = () => {
+    setCurrentStory(story);
     navigate(`/stories-panel/edit/${story.slug}`);
   };
 

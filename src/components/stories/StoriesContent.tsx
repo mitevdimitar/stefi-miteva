@@ -1,13 +1,12 @@
 import { Grid } from '@mui/material';
-import StoryPreview from './StoryPreview';
-import { useContext } from 'react';
-import MainStoryPreview from './MainStoryPreview';
-import { StoriesStore } from '../../providers/StoriesProvider';
 import LoadingButton from '@mui/lab/LoadingButton';
+import StoryPreview from './StoryPreview';
+import MainStoryPreview from './MainStoryPreview';
+import { useStories } from '../../providers/StoriesProvider';
 import Loader from '../Loader';
 
 function StoriesContent() {
-  const { state, onLoadMore } = useContext(StoriesStore);
+  const { state, onLoadMore } = useStories();
   const { stories, fullyFetched, loading } = state;
   const previewStory = stories ? stories[0] : null;
   const remainingPageStories = stories ? stories.slice(1) : [];

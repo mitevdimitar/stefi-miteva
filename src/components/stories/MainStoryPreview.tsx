@@ -7,13 +7,12 @@ import {
   CardActions,
   useTheme,
 } from '@mui/material';
-import { Story } from '../../types';
 import parse from 'html-react-parser';
+import { useNavigate } from 'react-router-dom';
+import { Story } from '../../types';
 import { convertDateToDotFormat } from '../../utils/date';
 import StoryChip from './StoryChip';
-import { useContext } from 'react';
-import { StoriesStore } from '../../providers/StoriesProvider';
-import { useNavigate } from 'react-router-dom';
+import { useStories } from '../../providers/StoriesProvider';
 import { useMobile } from '../../hooks/useMobile';
 
 interface MainStoryPreviewProps {
@@ -22,7 +21,7 @@ interface MainStoryPreviewProps {
 
 function MainStoryPreview({ story }: MainStoryPreviewProps) {
   const theme = useTheme();
-  const { setCurrentStory } = useContext(StoriesStore);
+  const { setCurrentStory } = useStories();
   const navigate = useNavigate();
   const isMobile = useMobile();
 
