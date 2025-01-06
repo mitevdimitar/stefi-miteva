@@ -11,7 +11,6 @@ export enum StoriesActionKind {
   SET_ERROR = 'SET_ERROR',
 }
 
-// An interface for our actions
 interface StoriesAction {
   type: StoriesActionKind;
   payload?: any;
@@ -25,15 +24,6 @@ export interface StoriesState {
   loading: boolean;
   error: null | string;
 }
-
-export const initalStoryState: StoriesState = {
-  stories: null,
-  currentStory: null,
-  lastVisible: null,
-  fullyFetched: false,
-  loading: false,
-  error: null,
-};
 
 export function storiesReducer(state: StoriesState, action: StoriesAction) {
   switch (action.type) {

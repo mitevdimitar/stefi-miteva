@@ -6,8 +6,7 @@ import { useStories } from '../../providers/StoriesProvider';
 import Loader from '../Loader';
 
 function StoriesContent() {
-  const { state, onLoadMore } = useStories();
-  const { stories, fullyFetched, loading } = state;
+  const { stories, fullyFetched, loading, onLoadMore } = useStories();
   const previewStory = stories ? stories[0] : null;
   const remainingPageStories = stories ? stories.slice(1) : [];
 

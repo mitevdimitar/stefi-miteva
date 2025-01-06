@@ -1,5 +1,6 @@
 import {
   createContext,
+  PropsWithChildren,
   useCallback,
   useContext,
   useEffect,
@@ -8,27 +9,30 @@ import {
 import {
   StoriesActionKind,
   StoriesState,
-  initalStoryState,
   storiesReducer,
 } from '../reducers/storiesReducer';
 import { Story } from '../types';
 import { QuerySnapshot } from 'firebase/firestore';
 import { getFirebaseStories, getStoryBySlug } from '../services/stories';
 
-interface StoriesContext {
-  state: StoriesState;
+interface StoriesContext extends StoriesState {
   onLoadMore: () => void;
   setCurrentStory: (story: Story) => void;
   getStories: () => void;
   getCurrentStory: (slug: string) => void;
 }
 
-interface StoriesProviderProps {
-  children: React.ReactNode;
-}
+const initalStoryState: StoriesState = {
+  stories: null,
+  currentStory: null,
+  lastVisible: null,
+  fullyFetched: false,
+  loading: false,
+  error: null,
+};
 
 export const StoriesStore = createContext<StoriesContext>({
-  state: initalStoryState,
+  ...initalStoryState,
   onLoadMore: () => {},
   setCurrentStory: () => {},
   getStories: () => {},
@@ -45,7 +49,7 @@ export const useStories = () => {
   return context;
 };
 
-export function StoriesProvider({ children }: StoriesProviderProps) {
+export function StoriesProvider({ children }: PropsWithChildren) {
   const [state, dispatch] = useReducer(storiesReducer, initalStoryState);
   const { stories, fullyFetched, lastVisible } = state;
 
@@ -126,7 +130,7 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
   return (
     <Provider
       value={{
-        state,
+        ...state,
         onLoadMore,
         setCurrentStory,
         getStories,

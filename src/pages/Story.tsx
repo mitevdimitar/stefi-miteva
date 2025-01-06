@@ -9,8 +9,7 @@ import Loader from '../components/Loader';
 import NotFund from '../img/not_found.png';
 
 function Story() {
-  const { state, getCurrentStory } = useStories();
-  const { currentStory, error } = state;
+  const { currentStory, error, getCurrentStory } = useStories();
   const params = useParams();
   const theme = useTheme();
   const dateCreated = convertDateToDotFormat(
