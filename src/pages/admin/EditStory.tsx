@@ -3,8 +3,7 @@ import { useStories } from '../../providers/StoriesProvider';
 
 function EditStory() {
   const { currentStory } = useStories();
-  console.log({ currentStory });
-  return <StoryForm />;
+  return <StoryForm story={currentStory} />;
 }
 
 export default EditStory;

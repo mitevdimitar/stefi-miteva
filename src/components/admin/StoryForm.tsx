@@ -13,6 +13,8 @@ import * as yup from 'yup';
 import StoryEditor from './TextEditor';
 import { createStory } from '../../services/stories';
 import ImageUpload from './ImageUpload';
+import { Story } from '../../types';
+import { FC } from 'react';
 
 const storySchema = yup
   .object({
@@ -30,7 +32,11 @@ const storySchema = yup
   })
   .required();
 
-function StoryForm() {
+interface StoryFormProps {
+  story?: Story | null;
+}
+
+const StoryForm: FC<StoryFormProps> = ({ story }) => {
   const {
     control,
     handleSubmit,
@@ -39,13 +45,14 @@ function StoryForm() {
   } = useForm({
     resolver: yupResolver(storySchema),
     defaultValues: {
-      title: '',
-      text: '',
-      excerpt: '',
-      slug: '',
-      imageUrl: '',
+      title: story?.title || '',
+      text: story?.content || '',
+      excerpt: story?.excerpt || '',
+      slug: story?.slug || '',
+      imageUrl: story?.imageUrl || '',
     },
   });
+  console.log({ story });
   const theme = useTheme();
   const title = watch('title');
 
@@ -111,6 +118,7 @@ function StoryForm() {
                 placeholder="Откъс"
                 error={!!errors.excerpt}
                 helperText={errors.excerpt?.message}
+                multiline
               />
             )}
           />
@@ -168,6 +176,6 @@ function StoryForm() {
       </form>
     </Stack>
   );
-}
+};
 
 export default StoryForm;
