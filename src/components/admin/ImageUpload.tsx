@@ -21,7 +21,6 @@ const ImageUpload: FC<ImageUploadProps> = ({ onUpload }) => {
 
     try {
       const downloadURL = await uploadStoryImage(file, user?.uid || '');
-      console.log('File uploaded:', downloadURL);
       setUploading(false);
       if (onUpload) onUpload(downloadURL);
     } catch (err) {

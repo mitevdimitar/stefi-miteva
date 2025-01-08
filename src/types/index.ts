@@ -15,6 +15,14 @@ export type Story = {
   title: string;
 };
 
+export type StoryFormData = {
+  text: string;
+  title: string;
+  excerpt: string;
+  slug: string;
+  imageUrl: string;
+};
+
 export type Illustration = {
   img: string;
   title: string;

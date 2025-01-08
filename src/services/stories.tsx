@@ -9,6 +9,7 @@ import {
   addDoc,
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
+import { Story } from '../types';
 
 export const getFirebaseStories = async (lastVisible: any) => {
   const newQuery = lastVisible
@@ -48,7 +49,9 @@ export const getStoryBySlug = async (slug: string) => {
   return matchedStory;
 };
 
-export const createStory = async (story: any): Promise<any> => {
+export const createStory = async (
+  story: Story
+): Promise<{ id: string } & Story> => {
   const created = await addDoc(collection(db, 'stories'), story);
   console.log({ created });
   return { id: created.id, ...story };

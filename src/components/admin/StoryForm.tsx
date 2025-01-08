@@ -13,7 +13,7 @@ import * as yup from 'yup';
 import StoryEditor from './TextEditor';
 import { createStory } from '../../services/stories';
 import ImageUpload from './ImageUpload';
-import { Story } from '../../types';
+import { Story, StoryFormData } from '../../types';
 import { FC } from 'react';
 
 const storySchema = yup
@@ -52,22 +52,30 @@ const StoryForm: FC<StoryFormProps> = ({ story }) => {
       imageUrl: story?.imageUrl || '',
     },
   });
-  console.log({ story });
   const theme = useTheme();
   const title = watch('title');
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: StoryFormData) => {
     const { text, title, excerpt, slug, imageUrl } = data;
     try {
-      const story = {
-        text,
+      const story: Story = {
+        author: 'Стефания Митева',
+        categorties: [],
+        date_created: new Date().toISOString().split('.')[0],
+        date_modified: new Date().toISOString().split('.')[0],
+        link: `https://stefimiteva.com/stories/${slug}`,
+        status: 'publish',
+        tags: [],
+        content: text,
         title,
         excerpt,
         slug,
         imageUrl,
       };
-      const created = await createStory(story);
-      console.log({ created });
+      await createStory(story);
+      //TODO: test both without creating real story
+      //navigate to stories panel
+      //display notification
     } catch (error) {
       console.log(error);
     }
