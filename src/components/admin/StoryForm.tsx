@@ -15,6 +15,8 @@ import { createStory } from '../../services/stories';
 import ImageUpload from './ImageUpload';
 import { Story, StoryFormData } from '../../types';
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useNotification } from '../../providers/NotificationProvider';
 
 const storySchema = yup
   .object({
@@ -53,15 +55,18 @@ const StoryForm: FC<StoryFormProps> = ({ story }) => {
     },
   });
   const theme = useTheme();
+  const navigate = useNavigate();
+  const { showNotification } = useNotification();
   const title = watch('title');
 
   const onSubmit = async (data: StoryFormData) => {
     const { text, title, excerpt, slug, imageUrl } = data;
     try {
-      const story: Story = {
+      const updatedStory: Story = {
         author: 'Стефания Митева',
         categorties: [],
-        date_created: new Date().toISOString().split('.')[0],
+        date_created:
+          story?.date_created || new Date().toISOString().split('.')[0],
         date_modified: new Date().toISOString().split('.')[0],
         link: `https://stefimiteva.com/stories/${slug}`,
         status: 'publish',
@@ -72,10 +77,9 @@ const StoryForm: FC<StoryFormProps> = ({ story }) => {
         slug,
         imageUrl,
       };
-      await createStory(story);
-      //TODO: test both without creating real story
-      //navigate to stories panel
-      //display notification
+      await createStory(updatedStory);
+      showNotification('Приказката е създадена успешно!');
+      navigate('/stories-panel');
     } catch (error) {
       console.log(error);
     }
