@@ -2,7 +2,7 @@ type StoryStatus = 'publish' | 'hide';
 
 export type Story = {
   author: string;
-  categorties: number[];
+  categories: number[];
   content: string;
   date_created: string;
   date_modified: string;
@@ -13,6 +13,7 @@ export type Story = {
   status: StoryStatus;
   tags: string[];
   title: string;
+  id?: string;
 };
 
 export type StoryFormData = {
@@ -21,6 +22,7 @@ export type StoryFormData = {
   excerpt: string;
   slug: string;
   imageUrl: string;
+  tags?: (string | undefined)[];
 };
 
 export type Illustration = {

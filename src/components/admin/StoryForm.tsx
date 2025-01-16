@@ -5,18 +5,22 @@ import {
   TextField,
   Box,
   Typography,
+  InputLabel,
+  Select,
+  MenuItem,
   useTheme,
 } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import StoryEditor from './TextEditor';
-import { createStory } from '../../services/stories';
+import { createStory, editStory } from '../../services/stories';
 import ImageUpload from './ImageUpload';
 import { Story, StoryFormData } from '../../types';
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useNotification } from '../../providers/NotificationProvider';
+import { STORY_TAGS } from '../../constants';
 
 const storySchema = yup
   .object({
@@ -31,6 +35,7 @@ const storySchema = yup
       .string()
       .required('Приказката трябва да има slug! Това е разширението на url-a!'),
     imageUrl: yup.string().required('Трябва да качиш изображение!'),
+    tags: yup.array().of(yup.string()),
   })
   .required();
 
@@ -52,6 +57,7 @@ const StoryForm: FC<StoryFormProps> = ({ story }) => {
       excerpt: story?.excerpt || '',
       slug: story?.slug || '',
       imageUrl: story?.imageUrl || '',
+      tags: story?.tags || [],
     },
   });
   const theme = useTheme();
@@ -60,25 +66,27 @@ const StoryForm: FC<StoryFormProps> = ({ story }) => {
   const title = watch('title');
 
   const onSubmit = async (data: StoryFormData) => {
-    const { text, title, excerpt, slug, imageUrl } = data;
+    const { text, title, excerpt, slug, imageUrl, tags } = data;
     try {
       const updatedStory: Story = {
         author: 'Стефания Митева',
-        categorties: [],
+        categories: story?.categories || [],
         date_created:
           story?.date_created || new Date().toISOString().split('.')[0],
         date_modified: new Date().toISOString().split('.')[0],
         link: `https://stefimiteva.com/stories/${slug}`,
         status: 'publish',
-        tags: [],
+        tags: (tags?.filter((tag) => tag !== undefined) as string[]) || [],
         content: text,
         title,
         excerpt,
         slug,
         imageUrl,
       };
-      await createStory(updatedStory);
-      showNotification('Приказката е създадена успешно!');
+      story && story.id
+        ? await editStory(story.id, updatedStory)
+        : await createStory(updatedStory);
+      showNotification('Приказката е запазена успешно!', 5000);
       navigate('/stories-panel');
     } catch (error) {
       console.log(error);
@@ -147,6 +155,35 @@ const StoryForm: FC<StoryFormProps> = ({ story }) => {
                 error={!!errors.slug}
                 helperText={errors.slug?.message}
               />
+            )}
+          />
+          <Controller
+            control={control}
+            name="tags"
+            defaultValue={[]} // Default value for the multiselect
+            render={({ field: { onChange, value } }) => (
+              <FormControl fullWidth>
+                <InputLabel id="tags-label">Tags</InputLabel>
+                <Select
+                  labelId="tags-label"
+                  label="Tags"
+                  value={value}
+                  onChange={(event) =>
+                    onChange(
+                      Array.isArray(event.target.value)
+                        ? event.target.value
+                        : [event.target.value]
+                    )
+                  }
+                  renderValue={(selected) => selected.join(', ')} // Display selected values
+                >
+                  {STORY_TAGS.map((tag: string) => (
+                    <MenuItem key={tag} value={tag}>
+                      {tag}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
             )}
           />
           {/* Image Upload Field */}

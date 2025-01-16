@@ -65,7 +65,7 @@ export function StoriesProvider({ children }: PropsWithChildren) {
     (snapshot: QuerySnapshot) => {
       const fetchedStories: Story[] = stories ? [...stories] : [];
       snapshot.forEach((doc) => {
-        fetchedStories.push(doc.data() as Story);
+        fetchedStories.push({ ...doc.data(), id: doc.id } as Story);
       });
       dispatch({
         type: StoriesActionKind.GET_STORIES,

@@ -6,7 +6,9 @@ import {
   getDocs,
   startAfter,
   where,
+  doc,
   addDoc,
+  updateDoc,
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
 import { Story } from '../types';
@@ -53,6 +55,14 @@ export const createStory = async (
   story: Story
 ): Promise<{ id: string } & Story> => {
   const created = await addDoc(collection(db, 'stories'), story);
-  console.log({ created });
   return { id: created.id, ...story };
+};
+
+export const editStory = async (
+  id: string,
+  updatedStory: Partial<Story>
+): Promise<{ id: string } & Partial<Story>> => {
+  const storyRef = doc(db, 'stories', id);
+  await updateDoc(storyRef, updatedStory);
+  return { id, ...updatedStory };
 };
