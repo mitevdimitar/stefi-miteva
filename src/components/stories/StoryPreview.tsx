@@ -39,47 +39,34 @@ export default function StoryPreview({ story }: StoryPreviewProps) {
   return (
     <Card
       sx={{
-        //maxWidth: 345,
         borderRadius: '40px',
-        background: 'transparent',
+        background: 'whitesmoke',
         [theme.breakpoints.down('sm')]: {
           maxWidth: '100%',
         },
+        cursor: 'pointer',
+        transition: 'all .2s ease-in-out',
+        '&:hover': {
+          transform: 'scale(1.02)',
+        },
       }}
       elevation={0}
+      onClick={onStoryClick}
     >
       <CardMedia
         sx={{
           height: 200,
           borderRadius: '40px',
           margin: '5px',
-          cursor: 'pointer',
-          transition: 'all .2s ease-in-out',
-          '&:hover': {
-            transform: 'scale(1.02)',
-          },
         }}
         title={story.title}
         image={story.imageUrl ? story.imageUrl : storyPreview}
-        onClick={onStoryClick}
       />
       <CardContent>
         {story.tags.map((tag, i) => {
           return <StoryChip key={i} label={tag} />;
         })}
-        <Typography
-          sx={{
-            cursor: 'pointer',
-            '&:hover': {
-              color: '#6b758a',
-            },
-          }}
-          gutterBottom
-          component="div"
-          variant="h5"
-          align="center"
-          onClick={onStoryClick}
-        >
+        <Typography gutterBottom component="div" variant="h5" align="center">
           {story.title}
         </Typography>
         <ExcerptContainer>{parse(story.excerpt)}</ExcerptContainer>

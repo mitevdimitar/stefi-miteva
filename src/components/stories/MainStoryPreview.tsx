@@ -42,12 +42,18 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
         maxHeight: 320,
         borderRadius: '40px',
         backgroundColor: '#A4AF9F',
+        cursor: 'pointer',
+        transition: 'all .2s ease-in-out',
+        '&:hover': {
+          transform: 'scale(1.01)',
+        },
         [theme.breakpoints.down('sm')]: {
           maxHeight: 'none',
           flexDirection: 'column',
         },
       }}
       elevation={0}
+      onClick={onStoryClick}
     >
       <CardMedia
         component="img"
@@ -55,11 +61,6 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
           width: '60%',
           borderRadius: '40px',
           padding: '10px',
-          cursor: 'pointer',
-          transition: 'all .2s ease-in-out',
-          '&:hover': {
-            transform: 'scale(1.02)',
-          },
           [theme.breakpoints.up('md')]: {
             width: '50%',
           },
@@ -69,7 +70,6 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
         }}
         image={story.imageUrl}
         alt={story.title}
-        onClick={onStoryClick}
       />
       <Box
         sx={{
@@ -90,19 +90,7 @@ function MainStoryPreview({ story }: MainStoryPreviewProps) {
           }}
         >
           <StoryChip label="Ново" isPreview={true} />
-          <Typography
-            sx={{
-              cursor: 'pointer',
-              '&:hover': {
-                color: '#6b758a',
-              },
-            }}
-            component="div"
-            variant="h4"
-            align="center"
-            mb={1}
-            onClick={onStoryClick}
-          >
+          <Typography component="div" variant="h4" align="center" mb={1}>
             {story.title}
           </Typography>
           <Typography
