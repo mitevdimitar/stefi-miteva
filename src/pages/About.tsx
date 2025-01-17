@@ -1,4 +1,3 @@
-import Layout from '../components/Layout';
 import {
   Box,
   Grid,
@@ -83,62 +82,59 @@ function About() {
   };
 
   return (
-    <Layout isHome={false}>
-      <Grid
-        container
-        direction="column"
-        sx={{
-          flexWrap: 'nowrap',
-          height: 'fit-content',
-          borderRadius: 5,
-        }}
-        p={3}
-      >
-        <Typography component="div" align="justify">
-          <img
-            src={require('../img/Stefi.jpg')}
-            alt="Pic of Stefi"
-            style={{
-              float: 'left',
-              borderRadius: 10,
-              marginRight: isMobile ? 0 : 25,
-              marginBottom: isMobile ? 15 : 0,
-              maxWidth: '100%',
-            }}
-          />
-          Стефания Митева е родена през 2010 г. в град Варна. Любовта ѝ към
-          книгите датира от най-ранна детска възраст. Първата си приказка
-          написва, когато е на 6 г. в предучилищна група на детската градина.
-          Оттогава насам е написала над 50 детски приказки, а повечето от тях е
-          оформила като детски книжки с авторски илюстрации. През 2019 г. от
-          печат излиза първата ѝ книга Осмото кралство, по една от любимите
-          приказки на Стефи, която тя написва на 7 годишна възраст. Илюстрациите
-          в книгата са дело на художници от Македония, Украйна, Индия и
-          Австралия. Книгата е номинирана в категория „Изследователи“ за
-          Национална награда „Бисерче вълшебно“ 2020. На 07.10.2020, в
-          книжарница PiBooks – Варна, Стефи чете откъс от книгата „Аврам,
-          Богдан, вода газят. АзБучен роман“, превръщайки се в най-младия
-          участник в Международната инициатива „Нощ на литературата“. От м.
-          Септември 2020г. Стефи е член на ЛК „Касталия“ към ЦПЛР – Общински
-          детски комплекс, гр. Варна
-        </Typography>
-        <Grid container mb={2}>
-          <List>
-            {awards.map((award, i) => {
-              return (
-                <ListItem key={i} disablePadding>
-                  <ListItemIcon sx={{ minWidth: isMobile ? 36 : 56 }}>
-                    <EmojiEventsIcon fontSize="small" />
-                  </ListItemIcon>
-                  <ListItemText primary={renderAward(award)} />
-                </ListItem>
-              );
-            })}
-          </List>
-        </Grid>
-        <YoutubeEmbed embedId="r5hp0BdPeuQ" />
+    <Grid
+      container
+      direction="column"
+      sx={{
+        flexWrap: 'nowrap',
+        height: 'fit-content',
+        borderRadius: 5,
+      }}
+      p={3}
+    >
+      <Typography component="div" align="justify">
+        <img
+          src={require('../img/Stefi.jpg')}
+          alt="Pic of Stefi"
+          style={{
+            float: 'left',
+            borderRadius: 10,
+            marginRight: isMobile ? 0 : 25,
+            marginBottom: isMobile ? 15 : 0,
+            maxWidth: '100%',
+          }}
+        />
+        Стефания Митева е родена през 2010 г. в град Варна. Любовта ѝ към
+        книгите датира от най-ранна детска възраст. Първата си приказка написва,
+        когато е на 6 г. в предучилищна група на детската градина. Оттогава
+        насам е написала над 50 детски приказки, а повечето от тях е оформила
+        като детски книжки с авторски илюстрации. През 2019 г. от печат излиза
+        първата ѝ книга Осмото кралство, по една от любимите приказки на Стефи,
+        която тя написва на 7 годишна възраст. Илюстрациите в книгата са дело на
+        художници от Македония, Украйна, Индия и Австралия. Книгата е номинирана
+        в категория „Изследователи“ за Национална награда „Бисерче вълшебно“
+        2020. На 07.10.2020, в книжарница PiBooks – Варна, Стефи чете откъс от
+        книгата „Аврам, Богдан, вода газят. АзБучен роман“, превръщайки се в
+        най-младия участник в Международната инициатива „Нощ на литературата“.
+        От м. Септември 2020г. Стефи е член на ЛК „Касталия“ към ЦПЛР – Общински
+        детски комплекс, гр. Варна
+      </Typography>
+      <Grid container mb={2}>
+        <List>
+          {awards.map((award, i) => {
+            return (
+              <ListItem key={i} disablePadding>
+                <ListItemIcon sx={{ minWidth: isMobile ? 36 : 56 }}>
+                  <EmojiEventsIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary={renderAward(award)} />
+              </ListItem>
+            );
+          })}
+        </List>
       </Grid>
-    </Layout>
+      <YoutubeEmbed embedId="r5hp0BdPeuQ" />
+    </Grid>
   );
 }
 export default About;

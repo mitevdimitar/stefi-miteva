@@ -7,12 +7,12 @@ import {
   CardActions,
   useTheme,
 } from '@mui/material';
-import { Story } from '../../utils/types';
+import { Story } from '../../types';
 import parse from 'html-react-parser';
 import { convertDateToDotFormat } from '../../utils/date';
 import StoryChip from './StoryChip';
 import { useContext } from 'react';
-import { StoriesStore } from '../../providers/Stories';
+import { StoriesStore } from '../../providers/StoriesProvider';
 import { useNavigate } from 'react-router-dom';
 import { useMobile } from '../../hooks/useMobile';
 

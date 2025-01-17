@@ -1,4 +1,4 @@
-import { IllustrationsProvider } from '../providers/Illustrations';
+import { IllustrationsProvider } from '../providers/IllustrationsProvider';
 import IllustrationsContent from '../components/IllustrationsContent';
 
 function Illustrations() {

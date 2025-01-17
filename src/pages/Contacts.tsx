@@ -1,4 +1,3 @@
-import Layout from '../components/Layout';
 import { Grid } from '@mui/material';
 import ContactsBackground from '../img/contacts_background_full.jpg';
 import { useMobile } from '../hooks/useMobile';
@@ -8,39 +7,37 @@ function Contacts() {
   const isMobile = useMobile();
 
   return (
-    <Layout isHome={false} isContacts={true}>
+    <Grid
+      container
+      sx={{
+        backgroundImage: `url(${ContactsBackground})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        borderRadius: isMobile ? 0 : 10,
+        padding: 3.5,
+        paddingTop: isMobile ? 7.5 : 3.5,
+      }}
+    >
       <Grid
-        container
+        item
+        xs={isMobile ? 12 : 6}
         sx={{
-          backgroundImage: `url(${ContactsBackground})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          borderRadius: isMobile ? 0 : 10,
-          padding: 3.5,
-          paddingTop: isMobile ? 7.5 : 3.5,
+          background: '#fffaf9',
+          borderRadius: 5,
+          opacity: 0.9,
         }}
       >
-        <Grid
-          item
-          xs={isMobile ? 12 : 6}
-          sx={{
-            background: '#fffaf9',
-            borderRadius: 5,
-            opacity: 0.9,
-          }}
-        >
-          <ContactForm />
-        </Grid>
-        <Grid
-          item
-          xs={5.7}
-          ml={2}
-          sx={{
-            borderRadius: 10,
-          }}
-        ></Grid>
+        <ContactForm />
       </Grid>
-    </Layout>
+      <Grid
+        item
+        xs={5.7}
+        ml={2}
+        sx={{
+          borderRadius: 10,
+        }}
+      ></Grid>
+    </Grid>
   );
 }
 

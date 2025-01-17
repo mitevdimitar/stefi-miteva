@@ -6,6 +6,7 @@ import {
   getDocs,
   startAfter,
   where,
+  addDoc,
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
 
@@ -45,4 +46,10 @@ export const getStoryBySlug = async (slug: string) => {
     matchedStory = doc.data();
   });
   return matchedStory;
+};
+
+export const createStory = async (story: any): Promise<any> => {
+  const created = await addDoc(collection(db, 'stories'), story);
+  console.log({ created });
+  return { id: created.id, ...story };
 };

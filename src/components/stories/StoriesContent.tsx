@@ -1,9 +1,8 @@
 import { Grid } from '@mui/material';
 import StoryPreview from './StoryPreview';
-import Layout from '../Layout';
 import { useContext } from 'react';
 import MainStoryPreview from './MainStoryPreview';
-import { StoriesStore } from '../../providers/Stories';
+import { StoriesStore } from '../../providers/StoriesProvider';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Loader from '../Loader';
 
@@ -14,7 +13,7 @@ function StoriesContent() {
   const remainingPageStories = stories ? stories.slice(1) : [];
 
   return (
-    <Layout isHome={false}>
+    <>
       {loading && !stories ? (
         <Loader />
       ) : (
@@ -44,7 +43,7 @@ function StoriesContent() {
           )}
         </>
       )}
-    </Layout>
+    </>
   );
 }
 

@@ -1,19 +1,21 @@
+import { PropsWithChildren, useMemo } from 'react';
 import { Grid, useTheme } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 import Background from '../img/Background.jpg';
 import BackgroundMobile from '../img/Background-mobile.jpg';
 import Menu from '../components/Menu';
 import Footer from './Footer';
 import { useMobile } from '../hooks/useMobile';
 
-interface LayoutProps {
-  children: JSX.Element;
-  isHome: boolean;
-  isContacts?: boolean;
-}
-
-function Layout({ children, isHome, isContacts }: LayoutProps) {
+function Layout({ children }: PropsWithChildren) {
   const theme = useTheme();
   const isMobile = useMobile();
+  const location = useLocation();
+  const isContacts = useMemo(
+    () => location.pathname.includes('contacts'),
+    [location]
+  );
+  const isHome = useMemo(() => location.pathname === '/', [location]);
 
   return (
     <Grid

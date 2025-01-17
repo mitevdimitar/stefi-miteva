@@ -3,14 +3,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Story } from '../../utils/types';
+import { Story } from '../../types';
 import { Box, styled, useTheme } from '@mui/material';
 import parse from 'html-react-parser';
 //import { convertDateToDotFormat } from '../../utils/date';
 import storyPreview from '../../img/StoryPreview.jpg';
 import StoryChip from './StoryChip';
 import { useContext } from 'react';
-import { StoriesStore } from '../../providers/Stories';
+import { StoriesStore } from '../../providers/StoriesProvider';
 import { useNavigate } from 'react-router-dom';
 
 interface StoryPreviewProps {

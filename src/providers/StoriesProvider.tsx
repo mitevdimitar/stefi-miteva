@@ -1,11 +1,11 @@
-import { createContext, useCallback, useReducer } from 'react';
+import { createContext, useCallback, useEffect, useReducer } from 'react';
 import {
   StoriesActionKind,
   StoriesState,
   initalStoryState,
   storiesReducer,
-} from '../reducers/Stories';
-import { Story } from '../utils/types';
+} from '../reducers/storiesReducer';
+import { Story } from '../types';
 import { QuerySnapshot } from 'firebase/firestore';
 import { getFirebaseStories, getStoryBySlug } from '../services/stories';
 
@@ -102,6 +102,12 @@ export function StoriesProvider({ children }: StoriesProviderProps) {
       setError('Изглежда няма такава приказка!');
     }
   }, []);
+
+  useEffect(() => {
+    if (!stories) {
+      getStories();
+    }
+  }, [stories, getStories]);
 
   return (
     <Provider

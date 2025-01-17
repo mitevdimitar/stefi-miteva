@@ -1,4 +1,4 @@
-import { Illustration } from '../utils/types';
+import { Illustration } from '../types';
 
 export enum IllustrationsActionKind {
   INITIATE_FETCHING = 'INITIATE_FETCHING',
