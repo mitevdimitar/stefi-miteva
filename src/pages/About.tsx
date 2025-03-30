@@ -21,7 +21,7 @@ interface Award {
 const awards = [
   {
     text: 'Март 2025 - 2-ро място в Десети Национален Конкурс за литературна творба посветен на 3-ти март със стихотворението “Зовът към родината”.',
-    linkName: 'Зовът към родината',
+    linkName: 'Зовът на родината',
     linkUrl: 'motherland',
   },
   {
@@ -128,6 +128,7 @@ function About() {
         <img
           src={require('../img/Stefi.jpg')}
           alt="Pic of Stefi"
+          loading="lazy"
           style={{
             float: 'left',
             borderRadius: 10,
